@@ -1,4 +1,6 @@
-<h1>My listings</h1>
+<h1>My equipments for rent</h1>
+
+ <%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
 
 <ol>
   <% @mylistings.each do |equipment| %>
@@ -8,6 +10,8 @@
       <p>Price / day : <%= equipment.price %></p>
       <p><%= Category.find(equipment.category_id).name %></p>
       <p><%= equipment.name %></p>
+      <%= link_to "Edit" %>
+      <%= link_to "Delete" %>
     </li>
   <% end %>
 </ol>
