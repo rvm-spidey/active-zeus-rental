@@ -5,6 +5,10 @@
 
   <div class="form-inputs">
 
+   <%= f.input  :admin,
+                as: :boolean,
+                hint: "As an admin, you can rent your equipments and keep a track of who requested to book your equipments" %>
+
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
@@ -23,13 +27,14 @@
     <%= f.label :district, "Select District" %>
     <%= f.select :district,
                 options_for_select(["Port Louis", "Pamplemousses", "Rivière du Rempart", "Flacq", "Grand Port", "Savanne", "Black River", "Plaines Wilhems", "Moka"]),
-                { include_blank: "Select District", required: true, autofocus: true },
-                class: "form-control" %>
+                { required: true, autofocus: true },
+                class: "form-control mb-4" %>
 
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

@@ -16,6 +16,11 @@
           <%= link_to "Discover equipments", fitness_equipments_path , class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li class="nav-item active">
+              <%= link_to "My listings", admin_path , class: "nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item active">
             <%= link_to "My bookings", bookings_path , class: "nav-link" %>
           </li>

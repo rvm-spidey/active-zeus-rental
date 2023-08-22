@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   # get 'bookings/create'
   # get 'bookings/destroy'
 
+  get "admin", to: "admin#index"
+
   resources :fitness_equipments do
     resources :bookings, only: [:new, :create]
   end

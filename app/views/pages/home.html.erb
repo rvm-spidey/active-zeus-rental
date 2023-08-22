@@ -1,5 +1,8 @@
 <% if user_signed_in? %>
     <h1>Welcome <%= current_user.first_name %>  <%= current_user.last_name %> </h1>
+
+    <h2>Admin ? <%= current_user.admin? %> </h2>
+
     <p> <%= current_user.last_name %> |
         <%= current_user.address %>   |
         <%= current_user.email %>  |

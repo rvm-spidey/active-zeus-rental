@@ -1,0 +1,13 @@
+<h1>My listings</h1>
+
+<ol>
+  <% @mylistings.each do |equipment| %>
+    <li>
+      <p><%= equipment.name %></p>
+      <p><%= equipment.description %></p>
+      <p>Price / day : <%= equipment.price %></p>
+      <p><%= Category.find(equipment.category_id).name %></p>
+      <p><%= equipment.name %></p>
+    </li>
+  <% end %>
+</ol>

@@ -10,6 +10,10 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+   <%= f.input  :admin,
+                as: :boolean,
+                hint: "As an admin, you can rent your equipments and keep a track of who requested to book your equipments" %>
+
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
