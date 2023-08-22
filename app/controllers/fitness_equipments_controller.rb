@@ -1,6 +1,6 @@
 class FitnessEquipmentsController < ApplicationController
 
-  before_action :set_equipment, only: [:show]
+  before_action :set_equipment, only: [:show, :edit, :update]
 
   def index
     @equipments = FitnessEquipment.all
@@ -31,8 +31,17 @@ class FitnessEquipmentsController < ApplicationController
     end
   end
 
-  private
+  def edit
+    @equipment = FitnessEquipment.find(params[:id])
+  end
 
+  def update
+    @equipment = FitnessEquipment.find(params[:id])
+    @equipment.update(equipment_params)
+    redirect_to fitness_equipment_path(@equipment), notice: 'Equipment was successfully updated.'
+  end
+
+  private
   def set_equipment
     @equipment = FitnessEquipment.find(params[:id])
   end
@@ -40,4 +49,5 @@ class FitnessEquipmentsController < ApplicationController
   def equipment_params
     params.require(:fitness_equipment).permit(:name, :category_id, :description, :price)
   end
+
 end

@@ -10,7 +10,7 @@
       <p>Price / day : <%= equipment.price %></p>
       <p><%= Category.find(equipment.category_id).name %></p>
       <p><%= equipment.name %></p>
-      <%= link_to "Edit" %>
+      <%= link_to "Edit", edit_fitness_equipment_path(current_user.id) %>
       <%= link_to "Delete" %>
     </li>
   <% end %>
