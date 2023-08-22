@@ -24,7 +24,8 @@ class FitnessEquipmentsController < ApplicationController
 
     @equipment.save
     if @equipment.save
-      redirect_to fitness_equipment_path(@equipment)
+      redirect_to admin_path
+      # redirect_to fitness_equipment_path(@equipment)
     else
       render :new, status: :unprocessable_entity
     end
