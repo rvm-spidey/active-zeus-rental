@@ -1,0 +1,30 @@
+ <%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
+
+<h3>Categories: </h3>
+<% @categories.each do |category| %>
+  <%= category.name %>
+<% end %>
+
+<h1>All equipments</h1>
+<div class="container">
+  <div class="row">
+    <% @equipments.each do |equipment| %>
+    <div class="col-sm-3 m-3">
+      <%= link_to fitness_equipment_path(equipment), class:"text-decoration-none" do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> Name: <%= equipment.name %> </h5>
+          <p class="card-text"> Description: <%= equipment.description %>  </p>
+          <p class="card-text"> Category: <%= Category.find(equipment.category_id).name %>  </p>
+          <i class="fa-solid fa-people-roof"> </i> available:  <%= equipment.available %> </p>
+          <p><i class="fa-solid fa-euro-sign"></i> price <%= equipment.price %> </p>
+          <p><i class="fa-solid fa-euro-sign"></i> owned by <%= User.find(equipment.user_id).first_name %> </p>
+          <p><i class="fa-solid fa-euro-sign"></i> address <%= User.find(equipment.user_id).address %> </p>
+          <p><i class="fa-solid fa-euro-sign"></i> district <%= User.find(equipment.user_id).district %> </p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

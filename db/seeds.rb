@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# category = Category.create(name: "Strength Training")
+# fitness_equipment = FitnessEquipment.create(name: "Dumbbells", category: category)
+# fitness_equipment.category
+
+puts User.last.id
+fitness_equipment1 = FitnessEquipment.create(name: "Analog Treadmill", category: Category.find(3) , user_id: User.last.id )

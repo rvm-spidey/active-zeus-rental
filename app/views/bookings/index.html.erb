@@ -1,0 +1,14 @@
+<h1>Bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+   <li>
+    <%= booking.status %>
+    <%= booking.date_from %>
+    <%= booking.date_to %>
+    <% @equipment = FitnessEquipment.find(booking.fitness_equipment_id)  %>
+    <%= @equipment.name %>
+    <%= @equipment.price %>
+   </li>
+  <% end %>
+</ul>

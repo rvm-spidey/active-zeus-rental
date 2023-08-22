@@ -1,0 +1,18 @@
+<%= @equipment.name %>
+<%= @equipment.description %>
+<%= @equipment.price %>
+<%= @equipment.category_id %>
+<%= @category.name %>
+<%= @equipment.user_id %>
+<%= @owner.first_name %>
+
+
+<hr>
+<h5>Book</h5>
+  <%= simple_form_for [@equipment, @booking] do |f| %>
+
+  <%= f.input :date_from, as: :date %>
+  <%= f.input :date_to, as: :date %>
+
+  <%= f.submit class:"btn btn-flat" %>
+<% end %>
