@@ -1,17 +1,56 @@
 <h1>My equipments for rent</h1>
 
- <%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
+<%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
 
-<ol>
-  <% @mylistings.each do |equipment| %>
-    <li>
-      <p><%= equipment.name %></p>
-      <p><%= equipment.description %></p>
-      <p>Price / day : <%= equipment.price %></p>
-      <p><%= Category.find(equipment.category_id).name %></p>
-      <p><%= equipment.name %></p>
-      <%= link_to "Edit" %>
-      <%= link_to "Delete" %>
-    </li>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">description</th>
+      <th scope="col">Price / day</th>
+      <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @mylistings.each do |equipment| %>
+    <tr>
+      <td><%= equipment.name %></td>
+      <td><%= equipment.description %></td>
+      <td><%= equipment.price %></td>
+      <td><%= Category.find(equipment.category_id).name %></td>
+      <td><%= link_to "Edit" %> </td>
+      <td><%= link_to "Delete" %> </td>
+    </tr>
   <% end %>
-</ol>
+  </tbody>
+</table>
+
+
+<h1>Booked Equipments by other users</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">User who requested</th>
+      <th scope="col">From / day</th>
+      <th scope="col">To</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @booked_equipments.each do |booking| %>
+      <% equipment = FitnessEquipment.find(booking.fitness_equipment_id) %>
+      <% user = User.find(booking.user_id) %>
+      <tr>
+        <td><%= equipment.name %></td>
+        <td><%= "#{user.first_name} #{user.last_name} " %></td>
+        <td><%= booking.date_from %></td>
+        <td><%= booking.date_to %></td>
+        <td><%= booking.status %></td>
+        <td><%= link_to "Accept" %> </td>
+        <td><%= link_to "Reject" %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
