@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
     @booking.status = "Pending"
     @booking.fitness_equipment = @fitness_equipment
     @booking.user = current_user
-    @booking.save
     if @booking.save
       redirect_to bookings_path
     else
