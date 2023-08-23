@@ -1,5 +1,6 @@
 <%= simple_form_for [@equipment, @booking] do |f| %>
 
+  <%= f.association :fitness_equipment, as: :select %>
   <%= f.input :date_from, as: :date %>
   <%= f.input :date_to, as: :date %>
 

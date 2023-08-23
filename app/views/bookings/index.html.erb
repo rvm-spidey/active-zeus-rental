@@ -6,7 +6,8 @@
       <th scope="col">Status</th>
       <th scope="col">Date from</th>
       <th scope="col">Date to</th>
-      <th scope="col">Category / day</th>
+      <th scope="col">Name of equipment</th>
+      <th scope="col">Category </th>
       <th scope="col">Price per day</th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
       <td><%= booking.date_to %> </td>
       <% @equipment = FitnessEquipment.find(booking.fitness_equipment_id)  %>
       <td><%= @equipment.name %> </td>
+      <td><%= Category.find(@equipment.category_id).name %> </td>
       <td><%= @equipment.price %> </td>
       <td><%= link_to "Edit", edit_booking_path(booking), class: "btn btn-danger btn-sm" %> </td>
       <td><%= link_to "Delete", booking_path(booking), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %> </td>
