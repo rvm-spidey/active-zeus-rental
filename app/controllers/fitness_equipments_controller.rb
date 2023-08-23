@@ -24,7 +24,7 @@ class FitnessEquipmentsController < ApplicationController
 
   def destroy
     @equipment.destroy!
-    redirect_to admin_path, status: :see_other
+    redirect_to admin_index_path, status: :see_other
   end
 
   def new
@@ -38,7 +38,7 @@ class FitnessEquipmentsController < ApplicationController
 
     @equipment.save
     if @equipment.save
-      redirect_to admin_path
+      redirect_to admin_index_path
       # redirect_to fitness_equipment_path(@equipment)
     else
       render :new, status: :unprocessable_entity
