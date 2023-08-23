@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # get "admin", to: "admin#index"
   # delete "admin", to: "admin#destroy"
 
-  resources :admin, only: [:index, :destroy, :edit, :update]
+  resources :admin, only: [:index]
 
   resources :fitness_equipments do
     resources :bookings, only: [:new, :create]

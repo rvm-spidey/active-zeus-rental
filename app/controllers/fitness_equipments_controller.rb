@@ -1,6 +1,6 @@
 class FitnessEquipmentsController < ApplicationController
 
-  before_action :set_equipment, only: [:show, :edit, :update]
+  before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -20,6 +20,11 @@ class FitnessEquipmentsController < ApplicationController
   def update
     @equipment.update(equipment_params)
     redirect_to fitness_equipment_path(@equipment), notice: 'Equipment was successfully updated.'
+  end
+
+  def destroy
+    @equipment.destroy!
+    redirect_to admin_path, status: :see_other
   end
 
   def new

@@ -19,7 +19,7 @@
       <td><%= equipment.price %></td>
       <td><%= Category.find(equipment.category_id).name %></td>
       <td><%= link_to "Edit", edit_fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm"  %> </td>
-      <td><%= link_to "Delete" , admin_path(equipment.id), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}   %> </td>
+      <td><%= link_to "Delete" , fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}   %> </td>
     </tr>
   <% end %>
   </tbody>
