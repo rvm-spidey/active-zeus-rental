@@ -22,7 +22,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    puts "des #{@booking}"
     @booking.destroy
     redirect_to bookings_path, status: :see_other
   end
