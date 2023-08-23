@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 
-  before_action :set_fitness_equipment, only: [:new, :create]
+  before_action :set_booking, only: %i[show edit update destroy]
 
   def index
     @bookings = Booking.all
@@ -19,14 +19,28 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    puts "des #{@booking}"
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
+  end
+
+  def edit
+  end
+
+  def update
+    @booking.update(booking_params)
+    redirect_to bookings_path
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:date_from, :date_to)
   end
 
-  def set_fitness_equipment
-    @fitness_equipment = FitnessEquipment.find(params[:fitness_equipment_id])
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
 
