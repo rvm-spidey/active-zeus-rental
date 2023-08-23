@@ -1,6 +1,6 @@
 class FitnessEquipmentsController < ApplicationController
 
-  before_action :set_equipment, only: [:show]
+  before_action :set_equipment, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -12,6 +12,14 @@ class FitnessEquipmentsController < ApplicationController
     @category = Category.find(@equipment.category_id)
     @owner = User.find(@equipment.user_id)
     @booking = Booking.new(fitness_equipment: @equipment)
+  end
+
+  def edit
+  end
+
+  def update
+    @equipment.update(equipment_params)
+    redirect_to fitness_equipment_path(@equipment), notice: 'Equipment was successfully updated.'
   end
 
   def new
