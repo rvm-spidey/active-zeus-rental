@@ -1,3 +1,4 @@
+<!--
 <% if user_signed_in? %>
     <h1>Welcome <%= current_user.first_name %>  <%= current_user.last_name %> </h1>
 
@@ -11,3 +12,13 @@
 <% else %>
     <h1>Please sign up/in </h1>
 <% end %>
+-->
+
+<div class="banner">
+  <h1>Active Zeus</h1>
+  <% if user_signed_in? %>
+    Welcome, back <%= current_user.last_name %> <button>  Discover Equipments </button>
+    <% else  %>
+    <button> Sign Up </button>
+  <% end %>
+</div>
