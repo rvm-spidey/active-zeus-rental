@@ -1,16 +1,32 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn2.photostockeditor.com/c/3112/fitness-assorted-gym-equipment-inside-the-gym-exercise-exercise-image.jpg); height: 540px;">
-  <div class="container text-center">
-  <% if user_signed_in? %>
+<div class="parent-container">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn2.photostockeditor.com/c/3112/fitness-assorted-gym-equipment-inside-the-gym-exercise-exercise-image.jpg); height: 540px;">
+    <div class="container text-center">
+    <% if user_signed_in? %>
       <h1><strong>Welcome back, <%= current_user.first_name %>  <%= current_user.last_name %> !</strong></h1>
       <h1>Thank you for continuing your fitness journey with </strong><strong>Active Zeus Rental</h1>
       <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-warning btn-lg" href="#">Discover Equipments</button>
       </div>
-  <% else %>
+    <% else %>
       <h1><strong>Start your fitness journey faster with </strong><strong>Active Zeus Rental!</strong></h1>
       <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-warning btn-lg" href="#">Start now</button>
+    </div>
+    <% end %>
+    </div>
+  </div>
+  <div id="search-container">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="col align-self-center col-lg-6">
+        <div class="form col-xl-12">
+          <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
+        </div>
       </div>
-  <% end %>
+      <div class="col-md-0.5">
+        <button id="search-button" type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
