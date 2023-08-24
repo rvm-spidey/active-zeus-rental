@@ -1,20 +1,16 @@
-<% if user_signed_in? %>
-    <h1>Welcome <%= current_user.first_name %>  <%= current_user.last_name %> </h1>
-
-    <h2>Admin ? <%= current_user.admin? %> </h2>
-
-    <p> <%= current_user.last_name %> |
-        <%= current_user.address %>   |
-        <%= current_user.email %>  |
-        <%= current_user.district %>
-    </p>
-<% else %>
-    <h1>Please sign up/in </h1>
-<% end %>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://cdn2.photostockeditor.com/c/3112/fitness-assorted-gym-equipment-inside-the-gym-exercise-exercise-image.jpg); height: 540px;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn2.photostockeditor.com/c/3112/fitness-assorted-gym-equipment-inside-the-gym-exercise-exercise-image.jpg); height: 540px;">
   <div class="container text-center">
-    <h1><strong>Start your fitness journey faster with Active Zeus Rental!</strong></h1>
-    <a class="btn btn-light" href="#">Start now</a>
+  <% if user_signed_in? %>
+      <h1><strong>Welcome back, <%= current_user.first_name %>  <%= current_user.last_name %> !</strong></h1>
+      <h1>Thank you for continuing your fitness journey with </strong><strong>Active Zeus Rental</h1>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-warning btn-lg" href="#">Discover Equipments</button>
+      </div>
+  <% else %>
+      <h1><strong>Start your fitness journey faster with </strong><strong>Active Zeus Rental!</strong></h1>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-warning btn-lg" href="#">Start now</button>
+      </div>
+  <% end %>
   </div>
 </div>
