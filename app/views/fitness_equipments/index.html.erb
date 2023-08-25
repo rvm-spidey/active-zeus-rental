@@ -11,7 +11,6 @@
   <div class="row">
     <% @equipments.each do |equipment| %>
     <div class="col-sm-3 m-3">
-      <%= link_to fitness_equipment_path(equipment), class:"text-decoration-none" do %>
       <div class="card" style="width: 18rem;">
         <img src="https://media.istockphoto.com/photos/jump-rope-picture-id481079317?k=6&m=481079317&s=612x612&w=0&h=iYZLfBLS8ESHAwLPM1QdkmgMeu_rpiTGCvV0z2oyg_Y=" class="card-img-top" alt="Jumping Ropes">
         <div class="card-body">
@@ -24,8 +23,9 @@
           <p><i class="fa-solid fa-euro-sign"></i> address <%= User.find(equipment.user_id).address %> </p>
           <p><i class="fa-solid fa-euro-sign"></i> district <%= User.find(equipment.user_id).district %> </p>
           <div class="card-buttons">
-            <a href="#" class="d-inline btn btn-warning">More details</a>
-            <a href="#" class="d-inline btn btn-warning">Book now</a>
+            <%= link_to fitness_equipment_path(equipment), class:"text-decoration-none" do %>
+              <a href="#" class="d-inline btn btn-warning">More details</a>
+              <a href="#" class="d-inline btn btn-warning">Book now</a>
           </div>
         </div>
       </div>
