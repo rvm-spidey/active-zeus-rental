@@ -48,8 +48,24 @@
         <td><%= booking.date_from %></td>
         <td><%= booking.date_to %></td>
         <td><%= booking.status %></td>
-        <td><%= link_to "Accept" %> </td>
-        <td><%= link_to "Reject" %> </td>
+
+        <% if booking.status == "Pending" %>
+          <td>
+            <%= form_for booking, url: accept_booking_path(booking.id), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: 'Accepted' %>
+              <%= f.submit 'Accept', class: 'btn btn-info btn-sm' %>
+            <% end %>
+          </td>
+          <td>
+            <%= form_for booking, url: reject_booking_path(booking.id), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: 'Rejected' %>
+              <%= f.submit 'Reject', class: 'btn btn-info btn-sm' %>
+            <% end %>
+          </td>
+        <% end %>
+
+
+
       </tr>
     <% end %>
   </tbody>
