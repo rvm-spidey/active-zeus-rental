@@ -1,9 +1,15 @@
 // Specific CSS for your home-page
 .banner {
   display: flex;
-}
 
 .container {
   margin: auto auto;
   color: white;
+  }
+
+  button {
+    &:hover {
+      background-color: rgb(250, 248, 248);
+    }
+  }
 }
