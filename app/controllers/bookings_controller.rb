@@ -28,6 +28,11 @@ class BookingsController < ApplicationController
   def edit
   end
 
+  def update
+    @booking.update(booking_params)
+    redirect_to bookings_path
+  end
+
   def accept
     @booking.update(status: 'Accepted')
     redirect_to admin_index_path, notice: 'Booking accepted successfully.'
