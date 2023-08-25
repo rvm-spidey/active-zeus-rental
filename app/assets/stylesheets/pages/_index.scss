@@ -1,2 +1,24 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.header-container {
+  padding: 6px;
+}
+
+.card-buttons {
+  margin: 10px 10px;
+}
+
+.card-body {
+
+  h4, p {
+    color: black;
+  }
+
+  i {
+    color: purple;
+  }
+
+  padding-left: 10px;
+  padding-right: 10px;
+}

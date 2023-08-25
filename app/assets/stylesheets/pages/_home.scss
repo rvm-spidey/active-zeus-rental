@@ -83,4 +83,26 @@
 
 .equip-btn {
   margin-bottom: 75px;
+.banner {
+  display: flex;
+}
+.container {
+  margin: auto auto;
+  color: white;
+
+  button {
+    &:hover {
+      background-color: rgb(250, 248, 248);
+    }
+  }
+}
+#search-container {
+  background-color: rgb(250, 248, 248);
+  margin-top: -50px;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-bottom: 100px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  box-shadow: 0 18px 58px rgba(39, 78, 94, .2);
 }

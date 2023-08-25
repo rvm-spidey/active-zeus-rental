@@ -45,6 +45,10 @@ class FitnessEquipmentsController < ApplicationController
     end
   end
 
+  def filter
+    puts "filterrr"
+  end
+
   private
 
   def set_equipment
@@ -52,6 +56,6 @@ class FitnessEquipmentsController < ApplicationController
   end
 
   def equipment_params
-    params.require(:fitness_equipment).permit(:name, :category_id, :description, :price)
+    params.require(:fitness_equipment).permit(:name, :category_id, :description, :price, :photo)
   end
 end
