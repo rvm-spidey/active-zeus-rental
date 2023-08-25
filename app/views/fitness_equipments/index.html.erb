@@ -1,6 +1,8 @@
 <h3>Categories: </h3>
-<% @categories.each do |category| %>
-  <%= category.name %>
+<%  @categories.each do |category| %>
+    <button class="btn btn-info btn-sm">
+      <%= category.name %>
+    </button>
 <% end %>
 
 <h1>All equipments</h1>
@@ -11,6 +13,9 @@
       <%= link_to fitness_equipment_path(equipment), class:"text-decoration-none" do %>
       <div class="card">
         <div class="card-body">
+          <div>
+            <%= cl_image_tag equipment.photo.key, height: 200, width: 200, crop: :fill if equipment.photo.attached? %>
+          </div>
           <h5 class="card-title"> Name: <%= equipment.name %> </h5>
           <p class="card-text"> Description: <%= equipment.description %>  </p>
           <p class="card-text"> Category: <%= Category.find(equipment.category_id).name %>  </p>
