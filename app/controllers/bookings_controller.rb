@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :set_fitness_equipment, only: [:new, :create]
-  before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_booking, only: %i[show edit update destroy reject accept]
 
   def index
     @bookings = Booking.all
@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    puts "destroyyin "
     @booking.destroy
     redirect_to bookings_path, status: :see_other
   end
@@ -29,10 +28,16 @@ class BookingsController < ApplicationController
   def edit
   end
 
-  def update
-    @booking.update(booking_params)
-    redirect_to bookings_path
+  def accept
+    @booking.update(status: 'Accepted')
+    redirect_to admin_index_path, notice: 'Booking accepted successfully.'
   end
+
+  def reject
+    @booking.update(status: 'Rejected')
+    redirect_to admin_index_path, notice: 'Booking rejected.'
+  end
+
 
   private
 
@@ -41,7 +46,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id)
+    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id, :status)
   end
 
   def set_booking
