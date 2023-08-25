@@ -1,11 +1,95 @@
 // Specific CSS for your home-page
+
+.banner-icons {
+  justify-content: center;
+  text-align:center;
+  margin-bottom: 100px;
+
+}
+
+.list-inline {
+  text-align:center;
+  margin:40px;
+
+}
+
+.list-inline-item {
+  margin: 40px;
+}
+
+// .icons {
+//   // margin: 75px 0px;
+// }
+
+.icons h2 {
+  font-size: 20px;
+}
+
+.card-container-benefits {
+  justify-content:center;
+  margin-bottom: 30px;
+}
+
+.card-benefits {
+  margin-right: 50px;
+  border-radius: 12px;
+}
+
+.card-benefits img {
+  border-radius: 12px 12px 0 0;
+}
+
+.benefits-title {
+
+  padding-left:30px;
+
+ }
+
+ .benefits-title h2 {
+  font-size:50px;
+  margin-bottom: 35px;
+}
+.top-picks-title {
+  padding-left:30px;
+}
+
+.top-picks-title h2 {
+  font-size:50px;
+  margin-bottom: 35px;
+}
+
+
+
+.card {
+  margin-right: 50px;
+  margin-bottom: 70px;
+  margin-left: auto;
+}
+
+.card img {
+  border-radius: 12px;
+}
+
+
+.card-container {
+  justify-content:center;
+}
+
+.fab {
+  font-weight: 400;
+  font-size:30px;
+}
+
+
+.equip-btn {
+  margin-bottom: 75px;
 .banner {
   display: flex;
 }
 .container {
   margin: auto auto;
   color: white;
-  
+
   button {
     &:hover {
       background-color: rgb(250, 248, 248);
