@@ -5,7 +5,9 @@
 <p>Category Name  <%= @category.name %></p>
 <p>Owner Id <%= @equipment.user_id %></p>
 <p>Owner Name <%= @owner.first_name %></p>
-
+<div>
+  <%= cl_image_tag @equipment.photo.key, height: 200, width: 200, crop: :fill if @equipment.photo.attached? %>
+</div>
 
 <hr>
 <h5>Book</h5>
