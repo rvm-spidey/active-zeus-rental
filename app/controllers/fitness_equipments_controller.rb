@@ -45,6 +45,10 @@ class FitnessEquipmentsController < ApplicationController
     end
   end
 
+  def filter
+    puts "filterrr"
+  end
+
   private
 
   def set_equipment
