@@ -1,8 +1,16 @@
-<%= simple_form_for [@equipment, @booking] do |f| %>
+
+<%= simple_form_for [@equipment, @booking],  data: { controller: 'flatpickr' } do |f| %>
 
   <%= f.association :fitness_equipment, as: :select %>
+
+  <!--
   <%= f.input :date_from, as: :date %>
   <%= f.input :date_to, as: :date %>
+  -->
+
+  <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
+  <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
+
 
   <%= f.submit class:"btn btn-flat" %>
 <% end %>

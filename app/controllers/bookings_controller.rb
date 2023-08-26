@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   before_action :set_fitness_equipment, only: [:new, :create]
-  before_action :set_booking, only: %i[show edit update destroy]
+  before_action :set_booking, only: %i[show edit update destroy reject accept]
 
   def index
     @bookings = Booking.all
@@ -12,6 +12,10 @@ class BookingsController < ApplicationController
     @booking.status = "Pending"
     @booking.fitness_equipment = @fitness_equipment
     @booking.user = current_user
+
+    days_diff = (@booking.date_to - @booking.date_from).to_i
+    @booking.total = days_diff * @fitness_equipment.price
+
     if @booking.save
       redirect_to bookings_path
     else
@@ -21,7 +25,6 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    puts "destroyyin "
     @booking.destroy
     redirect_to bookings_path, status: :see_other
   end
@@ -31,8 +34,24 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
+    days_diff = (@booking.date_to - @booking.date_from).to_i
+    @fitness_equipment_booking = FitnessEquipment.find(@booking.fitness_equipment_id)
+    @booking.total = days_diff * @fitness_equipment_booking.price
+    @booking.save
+
     redirect_to bookings_path
   end
+
+  def accept
+    @booking.update(status: 'Accepted')
+    redirect_to admin_index_path, notice: 'Booking accepted successfully.'
+  end
+
+  def reject
+    @booking.update(status: 'Rejected')
+    redirect_to admin_index_path, notice: 'Booking rejected.'
+  end
+
 
   private
 
@@ -41,7 +60,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id)
+    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id, :status, :total)
   end
 
   def set_booking

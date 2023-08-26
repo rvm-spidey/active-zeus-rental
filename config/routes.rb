@@ -19,5 +19,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings
+  resources :bookings do
+    member do
+      patch 'accept'
+      patch 'reject'
+    end
+  end
 end

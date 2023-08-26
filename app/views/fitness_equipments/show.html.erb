@@ -1,18 +1,29 @@
-<p>Name: <%= @equipment.name %></p>
-<p>Description <%= @equipment.description %></p>
-<p>Price <%= @equipment.price %></p>
-<p>Category Id <%= @equipment.category_id %></p>
-<p>Category Name  <%= @category.name %></p>
-<p>Owner Id <%= @equipment.user_id %></p>
-<p>Owner Name <%= @owner.first_name %></p>
+<div data-controller="flatpickr" >
+  <p>Name: <%= @equipment.name %></p>
+  <p>Description <%= @equipment.description %></p>
+  <p data-flatpickr-target="price" class="d-none"><%= @equipment.price %></p>
+  <p>Price <%= @equipment.price %></p>
+  <p>Category Id <%= @equipment.category_id %></p>
+  <p>Category Name  <%= @category.name %></p>
+  <p>Owner Id <%= @equipment.user_id %></p>
+  <p>Owner Name <%= @owner.first_name %></p>
+  <div>
+    <%= cl_image_tag @equipment.photo.key, height: 200, width: 200, crop: :fill if @equipment.photo.attached? %>
+  </div>
 
+  <hr>
 
-<hr>
-<h5>Book</h5>
-  <%= simple_form_for [@equipment, @booking] do |f| %>
+  <h5>Book</h5>
+    <%#= simple_form_for [@equipment, @booking], data: { controller: 'flatpickr' } do |f| %>
 
-  <%= f.input :date_from, as: :date %>
-  <%= f.input :date_to, as: :date %>
+    <%= simple_form_for [@equipment, @booking] do |f| %>
+      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate", action: "change->flatpickr#calculate" } } %>
+      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" , action: "change->flatpickr#calculate"} } %>
 
-  <%= f.submit class:"btn btn-flat" %>
-<% end %>
+      <%= f.submit class:"btn btn-flat" %>
+    <% end %>
+
+  <button class="btn btn-outline-success d-none" id="totalButton" data-flatpickr-target="total">
+    Days will be replaced once you select a valid date
+  </button>
+</div>
