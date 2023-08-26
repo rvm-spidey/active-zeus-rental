@@ -12,6 +12,10 @@ class BookingsController < ApplicationController
     @booking.status = "Pending"
     @booking.fitness_equipment = @fitness_equipment
     @booking.user = current_user
+
+    days_diff = (@booking.date_to - @booking.date_from).to_i
+    @booking.total = days_diff * @fitness_equipment.price
+
     if @booking.save
       redirect_to bookings_path
     else
@@ -30,6 +34,11 @@ class BookingsController < ApplicationController
 
   def update
     @booking.update(booking_params)
+    days_diff = (@booking.date_to - @booking.date_from).to_i
+    @fitness_equipment_booking = FitnessEquipment.find(@booking.fitness_equipment_id)
+    @booking.total = days_diff * @fitness_equipment_booking.price
+    @booking.save
+
     redirect_to bookings_path
   end
 
@@ -51,7 +60,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id, :status)
+    params.require(:booking).permit(:date_from, :date_to, :fitness_equipment_id, :status, :total)
   end
 
   def set_booking
