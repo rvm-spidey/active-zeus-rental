@@ -7,12 +7,8 @@ export default class extends Controller {
   static targets = [ "startDate", "endDate", "total", "price" ]
 
   connect() {
-
     flatpickr(this.startDateTarget, {})
     flatpickr(this.endDateTarget, {})
-
-    console.log("stimulus trigegred");
-    console.log("value " & this.startDateTarget.value);
   }
 
   // to add disconnect function in case of performace issues
