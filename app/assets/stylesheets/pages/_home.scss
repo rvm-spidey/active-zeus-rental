@@ -17,74 +17,80 @@
   margin: 40px;
 }
 
-// .icons {
-//   // margin: 75px 0px;
-// }
 
 .icons h2 {
   font-size: 20px;
 }
 
+
 .card-container-benefits {
-  justify-content: center;
+  justify-content:center;
   margin-bottom: 30px;
 }
 
-.card-benefits {
+.card {
+  justify-content:center;
   margin-right: 50px;
   border-radius: 12px;
 }
 
-.card-benefits img {
+.card img {
   border-radius: 12px 12px 0 0;
 }
 
 .benefits-title {
 
-  padding-left: 30px;
+  padding-left:30px;
 
-}
+ }
 
-.benefits-title h2 {
-  font-size: 50px;
+ .benefits-title h2 {
+  font-size:50px;
   margin-bottom: 35px;
-}
-
-.top-picks-title {
-  padding-left: 30px;
 }
 
 .top-picks-title h2 {
   font-size: 50px;
+  padding-left:30px;
   margin-bottom: 35px;
 }
 
-
-
-.card {
-  margin-right: 50px;
-  margin-bottom: 70px;
-  margin-left: auto;
+.top-picks-card h2 {
+  font-size:30px;
+  margin-bottom: 35px;
 }
 
-.card img {
-  border-radius: 12px;
+.top-picks-card-container {
+  justify-content:center;
 }
 
-
-.card-container {
-  justify-content: center;
+.top-picks-card {
+  margin-right: 15px;
 }
+
 
 .fab {
   font-weight: 400;
-  font-size: 30px;
+  font-size:30px;
 }
 
 
 .equip-btn {
   margin-bottom: 75px;
+  border-radius: 3px;
+
 }
+
+.btn-dark {
+  background-color: #F7C04A;
+  border: #F7C04A;
+}
+
+.btn-dark:hover {
+  background-color: #A555EC;
+}
+
+
 
 .banner {
   display: flex;
