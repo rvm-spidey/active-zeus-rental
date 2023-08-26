@@ -4,14 +4,13 @@ import flatpickr from "flatpickr";
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
 
-  static targets = [ "startDate", "endDate", "total", "price" ]
+  static targets = [ "startDate", "endDate", "total", "price",]
 
   connect() {
     flatpickr(this.startDateTarget, {})
     flatpickr(this.endDateTarget, {})
   }
 
-  // to add disconnect function in case of performace issues
 
   calculate() {
     const startDate = new Date(this.startDateTarget.value);
@@ -23,9 +22,10 @@ export default class extends Controller {
       const daysDiff = Math.round(
         diff /  (1000 * 60 * 60 * 24)
       )
+
       const value = daysDiff * parseInt(this.priceTarget.innerText,10);
       this.totalTarget.innerText =  `Total will be ${daysDiff} days x ${this.priceTarget.innerText} price/day = ${value}`;
-      this.totalTarget.classList.remove("d-none")
+      this.totalTarget.classList.remove("d-none");
     }
   }
 }
