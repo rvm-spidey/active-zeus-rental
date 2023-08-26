@@ -101,8 +101,13 @@
   color: white;
 
   button {
+    color: white;
+    margin-bottom: 75px;
+    border-radius: 3px;
+    background-color: #F7C04A;
+    border: #F7C04A;
     &:hover {
-      background-color: rgb(250, 248, 248);
+      background-color: #A555EC;
     }
   }
 }
