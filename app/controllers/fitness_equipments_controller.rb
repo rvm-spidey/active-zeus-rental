@@ -12,6 +12,12 @@ class FitnessEquipmentsController < ApplicationController
     @category = Category.find(@equipment.category_id)
     @owner = User.find(@equipment.user_id)
     @booking = Booking.new(fitness_equipment: @equipment)
+    @marker = {
+                  lat: @owner.latitude,
+                  lng: @owner.longitude,
+                  info_window_html: render_to_string(partial: "info_window", locals: {user: @owner}),
+                  marker_html: render_to_string(partial: "marker", locals: {user: @owner})
+              }
   end
 
   def edit
