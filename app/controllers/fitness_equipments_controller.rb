@@ -4,8 +4,16 @@ class FitnessEquipmentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @equipments = FitnessEquipment.all
     @categories = Category.all
+    @category_selected = 0
+    if params[:category].present?
+      @category_selected = params[:category].to_i
+      @equipments = FitnessEquipment.where(category_id: @category_selected)
+    elsif params[:query].present?
+      @equipments = FitnessEquipment.search_by_title_and_description(params[:query])
+    else
+      @equipments = FitnessEquipment.all
+    end
   end
 
   def show
