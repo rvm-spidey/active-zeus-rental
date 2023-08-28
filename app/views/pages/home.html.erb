@@ -20,14 +20,22 @@
     <div class="d-flex justify-content-center align-items-center">
       <div class="col align-self-center col-lg-6">
         <div class="form col-xl-12">
-          <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
+          <%= form_with url: fitness_equipments_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Type a keyword"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+          <%# <input type="search" class="form-control rounded" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" /> %>
         </div>
       </div>
-      <div class="col-md-0.5">
+      <%# <div class="col-md-0.5">
         <button id="search-button" type="button" class="btn btn-primary">
           <i class="fas fa-search"></i>
         </button>
-      </div>
+      </div> %>
     </div>
   </div>
 </div>
@@ -107,16 +115,23 @@
 
   <!--Top picks cards -->
   <div class="top-picks-title">
-    <h2>Our Top Fitness Equipment Bookings:</h2>
+    <h2> <span style="text-decoration: underline wavy rgb(0, 123, 74); text-underline-offset: 0.5em;" >
+      <%= Date.today.strftime("%B") %>
+      </span>
+      Top Booked  :</h2>
     </div>
   <div class="text-center top-picks-card-container d-flex flex-row " >
-    <div class="top-picks-card" style="width: 20rem;">
-    <img src="https://www.ausconbs.com.au/assets/full/DB-12.5.jpg?20211211001959" class="card-img-top" alt="...">
-     <div class="card-body">
-      <h2 class="card-title">Rubber Hex Dumbell 4KG</h2>
-    </div>
+    <%  @top_equipments.each do |equipment| %>
+      <div class="top-picks-card" style="width: 20rem;">
+        <img src="https://www.ausconbs.com.au/assets/full/DB-12.5.jpg?20211211001959" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2 class="card-title">Rubber Hex Dumbell 4KG</h2>
+        </div>
+      </div>
+      <%= equipment.name    %>
+    <% end %>
   </div>
-
+<%#
   <div class="top-picks-card" style="width: 20rem;">
     <img src="https://www.lsgfitness.com.au/cdn/shop/products/KBSTANDARD8_media_01_1200x1200.jpg?v=1569296975" class="card-img-top" alt="...">
     <div class="card-body">
@@ -137,7 +152,8 @@
       <h2 class="card-title">Sporttop Elliptical E80</h2>
     </div>
   </div>
-  </div>
+  </div> %>
+
 
 
 
