@@ -5,7 +5,7 @@
       <h1><strong>Welcome back, <%= current_user.first_name %>  <%= current_user.last_name %> !</strong></h1>
       <h1><strong>Unleash your fitness potential today with the available work-out equipments</strong></h1>
       <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-warning btn-lg" href="#">Discover Equipments</button>
+        <%= link_to "Discover our equipments", fitness_equipments_path,class:"btn btn-warning btn-lg"%>
       </div>
     <% else %>
       <h1><strong>Active Zeus Rental</strong></h1>
@@ -123,44 +123,25 @@
   <div class="text-center top-picks-card-container d-flex flex-row " >
     <%  @top_equipments.each do |equipment| %>
       <div class="top-picks-card" style="width: 20rem;">
-        <img src="https://www.ausconbs.com.au/assets/full/DB-12.5.jpg?20211211001959" class="card-img-top" alt="...">
+        <div class="card-img-top">
+          <%= cl_image_tag equipment.photo.key, height: 205, width: 265, crop: :fill if equipment.photo.attached? %>
+        </div>
         <div class="card-body">
-          <h2 class="card-title">Rubber Hex Dumbell 4KG</h2>
+          <h2 class="card-title"><%= equipment.name    %></h2>
+          <p class="card-text"> <%= equipment.booking_count %> equipment(s) booked </p>
+          <%= link_to "Check equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-primary"%>
+          <%= link_to "Check category", fitness_equipments_path(category: equipment.category_id),class:"btn btn-danger"%>
         </div>
       </div>
-      <%= equipment.name    %>
+
     <% end %>
   </div>
-<%#
-  <div class="top-picks-card" style="width: 20rem;">
-    <img src="https://www.lsgfitness.com.au/cdn/shop/products/KBSTANDARD8_media_01_1200x1200.jpg?v=1569296975" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h2 class="card-title">Kettlebell 8KG</h2>
-    </div>
-  </div>
-
-  <div class="top-picks-card" style="width: 20rem;">
-    <img src="https://cdn-live.powerhouse-fitness.co.uk/pictures/cardiostrong/treadmills/CVTM2520/1_1600.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h2 class="card-title">Origin Treadmill</h2>
-    </div>
-  </div>
-
-  <div class="top-picks-card" style="width: 20rem;">
-    <img src="https://media-www.canadiantire.ca/product/playing/exercise/exercise-equipment/1840965/proform-carbon-el5-elliptical-8f2a93f6-f93a-4305-9aa3-b0c67a0f09ab.png?imdensity=1&imwidth=1244" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h2 class="card-title">Sporttop Elliptical E80</h2>
-    </div>
-  </div>
-  </div> %>
-
-
 
 
 
   <!--Browse equip button -->
   <div class="text-center equip-btn">
-    <button type="button" class="btn btn-dark">Browse our equipments</button>
+    <%= link_to "Browse our equipments", fitness_equipments_path,class:"btn btn-warning btn-lg"%>
   </div>
 
   <%# <!-- HTML !-->
