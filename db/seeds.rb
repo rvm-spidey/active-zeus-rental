@@ -10,5 +10,6 @@
 # fitness_equipment = FitnessEquipment.create(name: "Dumbbells", category: category)
 # fitness_equipment.category
 
-puts User.last.id
-fitness_equipment1 = FitnessEquipment.create(name: "Analog Treadmill", category: Category.find(3) , user_id: User.last.id )
+Category.create(name: "Cycling")
+Category.create(name: "Weight")
+Category.create(name: "Treadmill")
