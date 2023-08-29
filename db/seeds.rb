@@ -10,6 +10,8 @@
 # fitness_equipment = FitnessEquipment.create(name: "Dumbbells", category: category)
 # fitness_equipment.category
 
-Category.create(name: "Cycling")
-Category.create(name: "Weight")
-Category.create(name: "Treadmill")
+Category.delete_all
+Category.create(name: "Bench", image: "bench.png")
+Category.create(name: "Treadmill", image: "treadmill.png")
+Category.create(name: "Weight", image: "weight.png")
+Category.create(name: "Yoga", image: "yoga.png")
