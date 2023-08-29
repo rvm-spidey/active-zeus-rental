@@ -3,7 +3,10 @@ class FitnessEquipmentsController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+
   def index
+    @CATEGORIES_IMAGES = [{name:"weight", img: "bench.png" }]
+
     @categories = Category.all
     @category_selected = 0
     if params[:category].present?

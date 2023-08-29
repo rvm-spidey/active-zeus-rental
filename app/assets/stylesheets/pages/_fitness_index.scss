@@ -1,0 +1,14 @@
+.categories-container {
+  display: flex;
+  gap: 20px;
+}
+
+.category-item {
+  text-align: center;
+}
+
+.category-item img {
+  width: 40px;
+  display: block;
+  margin: 0 auto 5px;
+}

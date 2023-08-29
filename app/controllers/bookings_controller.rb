@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy reject accept]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.order(date_from: :desc)
   end
 
   def create

@@ -2,32 +2,35 @@
 
 <%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">description</th>
-      <th scope="col">Price / day</th>
-      <th scope="col">Category</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @mylistings.each do |equipment| %>
-    <tr>
-      <td><%= equipment.name %></td>
-      <td><%= equipment.description %></td>
-      <td><%= equipment.price %></td>
-      <td><%= Category.find(equipment.category_id).name %></td>
-      <td><%= link_to "Edit", edit_fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm"  %> </td>
-      <td><%= link_to "Delete" , fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}   %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="p-5 mx-auto" style="width: 90vw" >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">description</th>
+        <th scope="col">Price / day</th>
+        <th scope="col">Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @mylistings.each do |equipment| %>
+      <tr>
+        <td><%= equipment.name %></td>
+        <td><%= equipment.description %></td>
+        <td><%= equipment.price %></td>
+        <td><%= Category.find(equipment.category_id).name %></td>
+        <td><%= link_to "Edit", edit_fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm"  %> </td>
+        <td><%= link_to "Delete" , fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}   %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 
 <h1>Booked Equipments by other users</h1>
 
+<div class="p-5 mx-auto" style="width: 90vw" >
 <table class="table table-striped">
   <thead>
     <tr>
@@ -70,3 +73,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

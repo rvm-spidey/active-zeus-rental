@@ -2,46 +2,37 @@
   <h1 class="text-center"><strong>All Equipments</strong></h1>
 </div>
 
-<div class="categories-container text-center">
-  <h3 class="d-inline"><strong>Categories: </strong></h3>
-  <%= link_to "all", fitness_equipments_path,
-        class:  (@category_selected === 0) ? "btn btn-primary" : "btn btn-outline-primary"
-  %>
-  <%  @categories.each do |category| %>
-    <%= link_to category.name, fitness_equipments_path(category: category),
-        class:  (category.id === @category_selected) ? "btn btn-primary" : "btn btn-outline-primary"
-    %>
+<%# <h3 class="text-center mt-4">Categories: </h3> %>
+<div class="categories-container justify-content-center">
+  <% @categories.each do |category| %>
+    <div class="category-item">
+    <%= image_tag(category.image, style: "width: 40px;") %>
+    <% if @category_selected === category.id %>
+        <%= link_to category.name, fitness_equipments_path,
+            class: (category.id === @category_selected) ? "btn btn-secondary" : "btn btn-outline-secondary"
+        %>
+    <% else %>
+        <%= link_to category.name, fitness_equipments_path(category: category),
+            class: (category.id === @category_selected) ? "btn btn-secondary" : "btn btn-outline-secondary"
+        %>
+    <% end %>
+    </div>
   <% end %>
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
+  <div class="col-sm-5 mb-5">
     <%= form_with url: fitness_equipments_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Type a keyword"
+            placeholder: "Search by equipment or owner"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-secondary" %>
     <% end %>
   </div>
 </div>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="movies">
-        <% if @equipments.any? %>
-          <% @equipments.each do |movie| %>
-            <h4><%= movie.name %></h4>
-          <% end %>
-        <% else %>
-          <em>Sorry, no equipment found.</em>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="container d-flex justify-content-between">
   <div class="row gx-5">
