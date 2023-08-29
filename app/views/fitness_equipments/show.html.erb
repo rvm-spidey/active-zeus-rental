@@ -20,8 +20,8 @@
     <%#= simple_form_for [@equipment, @booking], data: { controller: 'flatpickr' } do |f| %>
 
     <%= simple_form_for [@equipment, @booking] do |f| %>
-      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate", action: "change->flatpickr#calculate" } } %>
-      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" , action: "change->flatpickr#calculate"} } %>
+      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate", action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today } } %>
+      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" , action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today + 1} } %>
 
       <%= f.submit class:"btn btn-flat" %>
     <% end %>
