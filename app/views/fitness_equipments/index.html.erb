@@ -1,38 +1,39 @@
-<div class="header-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 100px;">
-  <h1 class="text-center"><strong>All Equipments</strong></h1>
-</div>
+<div class="parent-container">
+  <div class="header-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 100px;">
+    <h1 class="text-center"><strong>All Equipments</strong></h1>
+  </div>
 
 
 
-<div class="categories-container text-center">
-  <h3 class="d-inline"><strong>Categories: </strong></h3>
-  <%= link_to "all", fitness_equipments_path,
-        class:  (@category_selected === 0) ? "btn btn-primary" : "btn btn-outline-primary"
-  %>
-  <%  @categories.each do |category| %>
-    <%= link_to category.name, fitness_equipments_path(category: category),
-        class:  (category.id === @category_selected) ? "btn btn-primary" : "btn btn-outline-primary"
+  <div class="categories-container text-center">
+    <h3 class="d-inline"><strong>Categories: </strong></h3>
+    <%= link_to "all", fitness_equipments_path,
+          class:  (@category_selected === 0) ? "btn btn-primary" : "btn btn-outline-primary"
     %>
-  <% end %>
-</div>
+    <%  @categories.each do |category| %>
+      <%= link_to category.name, fitness_equipments_path(category: category),
+          class:  (category.id === @category_selected) ? "btn btn-primary" : "btn btn-outline-primary"
+      %>
+    <% end %>
+  </div>
 
-<div class="container">
-  <!-- Row Start -->
-  <div class="row gy-3">
-    <% @equipments.each do |equipment| %>
-      <div class="col-lg-4">
-        <div class="card" style="width: 25.5rem;">
-          <%= cl_image_tag equipment.photo.key, height: 205, width: 407, crop: :fill if equipment.photo.attached? %>
-          <div class="card-body-bottom">
-            <h5 class="card-title"><strong><%= equipment.name %> </strong></h5>
-            <p><strong> Description: </strong><%= equipment.description %>  </p>
-            <h6><strong> Category: </strong><%= Category.find(equipment.category_id).name %></h6>
-            <h6><strong> Availability:  </strong><%= equipment.available %> </h6>
-            <h6><strong> Price per day: </strong>Rs <%= equipment.price %> </h6>
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row gy-3 justify-content-center">
+      <% @equipments.each do |equipment| %>
+        <div class="col-4">
+          <div class="card">
+            <%= cl_image_tag equipment.photo.key, height: 250, width: 300, crop: :fill if equipment.photo.attached? %>
+            <div class="card-body-bottom">
+              <h5 class="card-title"><strong><%= equipment.name %> </strong></h5>
+              <h6><strong> Category: </strong><%= Category.find(equipment.category_id).name %></h6>
+              <h6><strong> Availability:  </strong><%= equipment.available %> </h6>
+              <h6><strong> Price per day: </strong>Rs <%= equipment.price %> </h6>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  <!-- Row End -->
+      <% end %>
+    <!-- Row End -->
+    </div>
   </div>
 </div>
