@@ -3,6 +3,7 @@
 
 .parent-container {
   background-color: white;
+  overflow: hidden;
 }
 .header-container {
   padding: 25px;
@@ -26,6 +27,8 @@
   min-height: 350px;
   width: 300px;
   margin: 0 auto;
-  box-shadow: 0 0 0 1px rgba(53,72,91,.07);
+  box-shadow: 5px 5px 15px rgba(136, 134, 134, 0.589);
   background-color: white;
+  border-radius: 18px;
+  text-align: center;
 }
