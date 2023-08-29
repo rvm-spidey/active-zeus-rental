@@ -10,6 +10,9 @@
 # fitness_equipment = FitnessEquipment.create(name: "Dumbbells", category: category)
 # fitness_equipment.category
 
+# Booking.delete_all
+# FitnessEquipment.delete_all
+
 Category.delete_all
 Category.create(name: "Bench", image: "bench.png")
 Category.create(name: "Treadmill", image: "treadmill.png")
