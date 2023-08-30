@@ -1,4 +1,8 @@
-<%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
+<div class="p-5 mx-auto" style="width: 90vw" >
+  <h2>Got any new equipment, you want to rent out ?
+    <%= link_to "Add here", new_fitness_equipment_path, class:"text-decoration-none" %>
+  </h2>
+</div>
 
 <div data-controller= "hide-show-div">
   <div class="buttons" >
@@ -42,11 +46,12 @@
 
       <div class="most-booked" style="margin-top:40px">
         <h1>Top 3 Most booked</h1>
-          <% @top_booked.each do |equipment| %>
+          <% @top_booked.each_with_index do |equipment, index| %>
             <ul class="list-group">
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <%= equipment.name %>
-                <button class="num-booked"> <%= equipment.booking_count %></button>
+                <% num_booked_class = "num-booked num-booked-#{index+1}" %>
+                <button class="<%= num_booked_class %>"> <%= equipment.booking_count %></button>
               </li>
             </ul>
           <% end %>
@@ -92,6 +97,7 @@
             <td>
             <% if booking.status == "Pending" %>
                 <div class="booking-options">
+
                   <%= form_for booking, url: accept_booking_path(booking.id), method: :patch do |f| %>
                     <%= f.hidden_field :status, value: 'Accepted' %>
                     <%= f.submit 'Accept', class: 'options-accept' %>
