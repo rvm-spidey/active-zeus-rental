@@ -1,34 +1,99 @@
-<h1>Bookings</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name of equipment</th>
-      <th scope="col">Category </th>
-      <th scope="col">Price per day</th>
-      <th scope="col">Date from</th>
-      <th scope="col">Date to</th>
-
-      <th scope="col">Total</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
-    <tr>
-      <% @equipment = FitnessEquipment.find(booking.fitness_equipment_id)  %>
-      <td><%= @equipment.name %> </td>
-      <td><%= Category.find(@equipment.category_id).name %> </td>
-      <td><%= @equipment.price %> </td>
-      <td><%= booking.date_from %> </td>
-      <td><%= booking.date_to %> </td>
+<div data-controller= "hide-show-div">
+  <div class="buttons" >
+  <button type="button" class="btn btn-secondary" data-action="click->hide-show-div#show_current" data-hide-show-div-target="currentbtn">Current Bookings</button>
+  <button type="button" class="btn btn-outline-secondary" data-action="click->hide-show-div#show_previous" data-hide-show-div-target="previousbtn">Previous Bookings</button>
+  </div>
 
 
-      <td><%= booking.total %> </td>
-      <td><%= booking.status %> </td>
-      <td><%= link_to "Edit", edit_booking_path(booking), class: "btn btn-danger btn-sm" %> </td>
-      <td><%= link_to "Delete", booking_path(booking), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <div data-hide-show-div-target="current">
+    <div class="p-5 mx-auto" style="width: 90vw"  >
+      <h1>Current Bookings</h1>
+
+      <table class="table table-striped" id="booking-table" >
+        <thead>
+          <tr>
+            <th scope="col">Equipment</th>
+            <th scope="col">Category </th>
+            <th scope="col">Date</th>
+            <th scope="col">Price/day</th>
+            <th scope="col">Total</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @bookings.each do |booking| %>
+          <tr>
+            <% equipment = FitnessEquipment.find(booking.fitness_equipment_id)  %>
+            <td>
+              <%= cl_image_tag equipment.photo.key, height: 40, width: 40, crop: :fill, radius: 50 if equipment.photo.attached? %>
+              <%= equipment.name %>
+            </td>
+            <td>
+              <%=  image_tag(Category.find(equipment.category_id).image, style: "width: 30px;") %>
+              <%= Category.find(equipment.category_id).name %>
+            </td>
+            <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}" %> </td>
+            <td><%= equipment.price %> </td>
+            <td><%= booking.total %> </td>
+            <td>
+            <% status_class = "status #{booking.status}" %>
+            <span class= "<%= status_class %>">
+                <%= booking.status %>
+              </span>
+            <% if booking.status == "Pending"%>
+              <td>
+                <%= link_to image_tag("edit", height: 25, width: 25), edit_booking_path(booking), class: "actions-icon" %>
+                <%= link_to image_tag("delete", height: 18, width: 20), booking_path(booking), class: "actions-icon", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+              </td>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div data-hide-show-div-target="previous" class="d-none">
+
+    <div class="p-5 mx-auto" style="width: 90vw" >
+      <h1>Previous Bookings</h1>
+      <table class="table table-striped" id="booking-table"  >
+        <thead>
+          <tr>
+            <th scope="col">Equipment</th>
+            <th scope="col">Category </th>
+            <th scope="col">Date</th>
+            <th scope="col">Price/day</th>
+            <th scope="col">Total</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @previous_bookings.each do |booking| %>
+          <tr>
+            <% equipment = FitnessEquipment.find(booking.fitness_equipment_id)  %>
+            <td>
+              <%= cl_image_tag equipment.photo.key, height: 40, width: 40, crop: :fill, radius: 50 if equipment.photo.attached? %>
+              <%= equipment.name %>
+            </td>
+            <td>
+              <%=  image_tag(Category.find(equipment.category_id).image, style: "width: 30px;") %>
+              <%= Category.find(equipment.category_id).name %>
+            </td>
+            <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}" %> </td>
+            <td><%= equipment.price %> </td>
+            <td><%= booking.total %> </td>
+            <td>
+            <% status_class = "status #{booking.status}" %>
+            <span class= "<%= status_class %>">
+                <%= booking.status %>
+            </span>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+ </div>

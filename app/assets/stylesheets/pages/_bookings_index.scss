@@ -1,0 +1,35 @@
+#booking-table th {
+  font-size: 30px;
+}
+
+#booking-table td {
+  vertical-align: middle;
+}
+
+.actions-icon {
+  padding: 0 10px;
+}
+
+.status {
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 252, 252);
+
+  &.Pending {
+    color: white;
+    background-color: rgba(255, 194, 62, 0.701);
+  }
+
+  &.Accepted {
+    color: white;
+    background-color: rgb(29, 182, 5);
+  }
+}
+
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
