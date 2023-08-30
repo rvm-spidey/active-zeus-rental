@@ -4,31 +4,122 @@
 .parent-container {
   background-color: white;
   overflow: hidden;
+
+  h1 {
+    color: rgb(255, 253, 253);
+  }
 }
 .header-container {
   padding: 25px;
 }
+
+//  starts here
+.wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+#search-container {
+  margin: 0 auto;
+}
+
+#search-container input {
+  background-color: transparent;
+  width: 40%;
+  border-bottom: 2px solid #110f29;
+  padding: 1em 0.3em;
+}
+
+#search-container input:focus {
+  border-bottom-color: rgba(144, 4, 231, 0.219);
+}
+
+#search-container button {
+  padding: 1em 2em;
+  margin-left: 1em;
+  background-color: darken(rgba(144, 4, 231, 0.219), 2%);
+  color: white;
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+#buttons buttons {
+  border: 2px solid rgba(144, 4, 231, 0.219);
+  padding: 1em 2.2em;
+  border-radius: 3em;
+  background-color: transparent;
+  color: rgba(144, 4, 231, 0.219);
+  cursor: pointer;
+}
+
+
+
 .categories-container {
   margin-top: 30px;
   margin-bottom: 50px;
-
-  button {
-    color: white;
-    border-radius: 3px;
-    background-color: #F7C04A;
-    border: #F7C04A;
-    &:hover {
-      background-color: #A555EC;
-    }
-  }
 }
 
 .card {
-  min-height: 350px;
-  width: 300px;
+  min-height: 400px;
+  width: 280px;
   margin: 0 auto;
-  box-shadow: 5px 5px 15px rgba(136, 134, 134, 0.589);
+  box-shadow: 5px 5px 15px rgba(126, 125, 125, 0.589);
   background-color: white;
-  border-radius: 18px;
+  border-radius: 17px;
   text-align: center;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin-bottom: 42px;
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 5px 5px 15px rgba(104, 103, 103, 0.507);
+  }
+}
+
+.card-img {
+  margin-top: -5px;
+  margin-bottom: 10px;
+  // border-width: 2px;
+  // border-color: rgb(224, 219, 219);
+  // box-shadow: 5px 5px 15px rgba(211, 208, 208, 0.788);
+}
+
+#card-button {
+  height: 30px;
+  width: 180px;
+  border-radius: .3rem;
+  background-color: darken(rgba(144, 4, 231, 0.219), 2%);
+  color: rgba(88, 6, 139, 0.856);
+  margin: 15px auto;
+  padding-top: 2px;
+
+  span {
+    margin-left: 1rem;
+  }
+
+  &:hover,
+  &:active {
+    background-color: darken(rgba(247, 220, 20, 0.959), 2%);
+    color: white;
+  }
+
+  span {
+    margin-left: 1rem;
+  }
+}
+
+.text-decoration-none {
+  color: rgba(88, 6, 139, 0.856);
+
+  &:hover,
+  &:active {
+    background-color: darken(rgba(247, 220, 20, 0.959), 2%);
+    color: white;
+  }
+
+  span {
+    margin-left: 1rem;
+  }
+
 }
