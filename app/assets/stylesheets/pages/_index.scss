@@ -6,58 +6,35 @@
   overflow: hidden;
 
   h1 {
-    color: rgb(255, 253, 253);
+    padding-top: 40px;
+    color: white;
+    margin: auto 0;
   }
 }
+
+// previous header container and header format
+
+// .header-container {
+//   padding: 25px;
+// }
+
+// header container and header format
+
 .header-container {
-  padding: 25px;
-}
-
-//  starts here
-.wrapper {
-  width: 95%;
   margin: 0 auto;
-}
-
-#search-container {
-  margin: 0 auto;
-}
-
-#search-container input {
-  background-color: transparent;
-  width: 40%;
-  border-bottom: 2px solid #110f29;
-  padding: 1em 0.3em;
-}
-
-#search-container input:focus {
-  border-bottom-color: rgba(144, 4, 231, 0.219);
-}
-
-#search-container button {
-  padding: 1em 2em;
-  margin-left: 1em;
-  background-color: darken(rgba(144, 4, 231, 0.219), 2%);
-  color: white;
-  border-radius: 5px;
-  margin-top: 0.5em;
-}
-
-#buttons buttons {
-  border: 2px solid rgba(144, 4, 231, 0.219);
-  padding: 1em 2.2em;
-  border-radius: 3em;
-  background-color: transparent;
-  color: rgba(144, 4, 231, 0.219);
-  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
+// Categories filter
 
 .categories-container {
   margin-top: 30px;
   margin-bottom: 50px;
 }
+
+// cards styling
 
 .card {
   min-height: 400px;
@@ -89,28 +66,30 @@
   height: 30px;
   width: 180px;
   border-radius: .3rem;
-  background-color: darken(rgba(144, 4, 231, 0.219), 2%);
-  color: rgba(88, 6, 139, 0.856);
+  background-color: rgb(8, 8, 8);
+  color: white;
   margin: 15px auto;
   padding-top: 2px;
 
   span {
     margin-left: 1rem;
+    font-weight: bold;
   }
 
   &:hover,
   &:active {
     background-color: darken(rgba(247, 220, 20, 0.959), 2%);
-    color: white;
+    color: rgb(8, 8, 8);
   }
 
   span {
     margin-left: 1rem;
+    font-weight: bold;
   }
 }
 
 .text-decoration-none {
-  color: rgba(88, 6, 139, 0.856);
+  color: white;
 
   &:hover,
   &:active {
