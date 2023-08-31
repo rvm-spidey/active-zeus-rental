@@ -42,8 +42,8 @@
               </span>
             <% if booking.status == "Pending"%>
               <td>
-                <%= link_to image_tag("edit", height: 25, width: 25), edit_booking_path(booking), class: "actions-icon" %>
-                <%= link_to image_tag("delete", height: 18, width: 20), booking_path(booking), class: "actions-icon", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+                <%= link_to image_tag("edit.png", style: "width: 20px;"), edit_booking_path(booking), class: "actions-icon" %>
+                <%= link_to image_tag("delete.png", style: "width: 20px;"), booking_path(booking), class: "actions-icon", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
               </td>
             <% else %>
               <td></td>
