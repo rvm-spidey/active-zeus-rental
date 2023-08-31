@@ -8,11 +8,11 @@ class FitnessEquipmentsController < ApplicationController
     @category_selected = 0
     if params[:category].present?
       @category_selected = params[:category].to_i
-      @equipments = FitnessEquipment.where(category_id: @category_selected)
+      @equipments = FitnessEquipment.where(category_id: @category_selected).where.not(user_id: current_user.id)
     elsif params[:query].present?
-      @equipments = FitnessEquipment.search_by_title_and_description(params[:query])
+      @equipments = FitnessEquipment.search_by_title_and_description(params[:query]).where.not(user_id: current_user.id)
     else
-      @equipments = FitnessEquipment.all
+      @equipments = FitnessEquipment.all.where.not(user_id: current_user.id)
     end
   end
 

@@ -1,8 +1,22 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
+
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag("zeus.png") %>
       Active Zeus Rental
+    <% end %>
+
+    <% if action_name == "home" %>
+      <div class="form col-m-12">
+        <%= form_with url: fitness_equipments_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Type a keyword"
+              %>
+            <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+      </div>
     <% end %>
 
 

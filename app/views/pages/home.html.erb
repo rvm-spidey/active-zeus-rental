@@ -3,7 +3,7 @@
     <div class="container text-center">
     <% if user_signed_in? %>
       <h1><strong>Welcome back, <%= current_user.first_name %>  <%= current_user.last_name %> !</strong></h1>
-      <h1><strong>Unleash your fitness potential today with the available work-out equipments</strong></h1>
+      <h3>Unleash your fitness potential today with the available work-out equipments</h3>
       <div class="d-grid gap-2 col-6 mx-auto">
         <%= link_to "Discover our equipments", fitness_equipments_path,class:"btn btn-warning btn-lg"%>
       </div>
@@ -16,6 +16,8 @@
     <% end %>
     </div>
   </div>
+
+  <!--
   <div id="search-container">
     <div class="d-flex justify-content-center align-items-center">
       <div class="col align-self-center col-lg-6">
@@ -38,11 +40,13 @@
       </div> %>
     </div>
   </div>
+  -->
+
 </div>
 
 <!--Icons -->
 
-<div class="banner-icons" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 200px;">
+<div class="banner-icons" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 200px; margin-top:150px ">
 <div class="icons">
 <ul class="list-inline">
   <li class="list-inline-item">
