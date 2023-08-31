@@ -20,6 +20,7 @@ class FitnessEquipmentsController < ApplicationController
     @category = Category.find(@equipment.category_id)
     @owner = User.find(@equipment.user_id)
     @booking = Booking.new(fitness_equipment: @equipment)
+
     @marker = {
                   lat: @owner.latitude,
                   lng: @owner.longitude,

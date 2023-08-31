@@ -4,7 +4,9 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy reject accept]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.order(date_from: :desc).where('user_id = ? AND date_to >= ?', current_user.id, Date.today)
+
+    @previous_bookings = Booking.all.order(date_from: :desc).where('user_id = ? AND date_to < ?', current_user.id, Date.today)
   end
 
   def create
@@ -66,6 +68,4 @@ class BookingsController < ApplicationController
   def set_booking
     @booking = Booking.find(params[:id])
   end
-
-
 end

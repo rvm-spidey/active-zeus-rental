@@ -3,19 +3,38 @@
   <div class="header-container-index" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)), url(https://media.istockphoto.com/id/1225398804/photo/sports-color-background.jpg?s=612x612&w=0&k=20&c=MQEmfl5AAomX81uhq_RrQoE0AspaHTtHQ6c430JcgLo=); height: 190px; width: 1400px; object-fit: cover; object-position: 0 100%;">
     <h1 class="text-center"><strong>All Equipments</strong></h1>
   </div>
+</div>
 
-  <%# Categories filter %>
-  <div class="categories-container text-center">
-    <h3 class="d-inline"><strong>Categories: </strong></h3>
-    <%= link_to "All", fitness_equipments_path,
-          class:  (@category_selected === 0) ? "btn btn-primary text-center" : "btn btn-outline-primary text-center"
-    %>
-    <%  @categories.each do |category| %>
-      <%= link_to category.name, fitness_equipments_path(category: category),
-          class:  (category.id === @category_selected) ? "btn btn-primary text-center" : "btn btn-outline-primary text-center"
-      %>
+<%# <h3 class="text-center mt-4">Categories: </h3> %>
+<div class="categories-container justify-content-center">
+  <% @categories.each do |category| %>
+    <div class="category-item">
+    <%= image_tag(category.image, style: "width: 40px;") %>
+    <% if @category_selected === category.id %>
+        <%= link_to category.name, fitness_equipments_path,
+            class: (category.id === @category_selected) ? "btn btn-secondary" : "btn btn-outline-secondary"
+        %>
+    <% else %>
+        <%= link_to category.name, fitness_equipments_path(category: category),
+            class: (category.id === @category_selected) ? "btn btn-secondary" : "btn btn-outline-secondary"
+        %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-sm-3 mb-5">
+    <%= form_with url: fitness_equipments_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search by equipment or owner"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-secondary" %>
     <% end %>
   </div>
+</div>
 
   <%# cards %>
 
@@ -39,7 +58,5 @@
           </div>
         </div>
       <% end %>
-    <!-- Row End -->
     </div>
   </div>
-</div>

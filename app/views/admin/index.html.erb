@@ -1,72 +1,119 @@
-<h1>My equipments for rent</h1>
+<div class="p-5 mx-auto" style="width: 90vw" >
+  <h2>Got any new equipment, you want to rent out ?
+    <%= link_to "Add here", new_fitness_equipment_path, class:"text-decoration-none" %>
+  </h2>
+</div>
 
-<%= link_to "Add new equipment", new_fitness_equipment_path, class:"text-decoration-none" %>
+<div data-controller= "hide-show-div">
+  <div class="buttons" >
+  <button type="button" class="btn btn-secondary" data-action="click->hide-show-div#show_current" data-hide-show-div-target="currentbtn">My equipments</button>
+  <button type="button" class="btn btn-outline-secondary" data-action="click->hide-show-div#show_previous" data-hide-show-div-target="previousbtn">Booked equipments</button>
+  </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">description</th>
-      <th scope="col">Price / day</th>
-      <th scope="col">Category</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @mylistings.each do |equipment| %>
-    <tr>
-      <td><%= equipment.name %></td>
-      <td><%= equipment.description %></td>
-      <td><%= equipment.price %></td>
-      <td><%= Category.find(equipment.category_id).name %></td>
-      <td><%= link_to "Edit", edit_fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm"  %> </td>
-      <td><%= link_to "Delete" , fitness_equipment_path(equipment.id), class: "btn btn-secondary btn-sm", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}   %> </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-
-<h1>Booked Equipments by other users</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">User who requested</th>
-      <th scope="col">From / day</th>
-      <th scope="col">To</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @booked_equipments.each do |booking| %>
-      <% equipment = FitnessEquipment.find(booking.fitness_equipment_id) %>
-      <% user = User.find(booking.user_id) %>
-      <tr>
-        <td><%= equipment.name %></td>
-        <td><%= "#{user.first_name} #{user.last_name} " %></td>
-        <td><%= booking.date_from %></td>
-        <td><%= booking.date_to %></td>
-        <td><%= booking.status %></td>
-
-        <% if booking.status == "Pending" %>
-          <td>
-            <%= form_for booking, url: accept_booking_path(booking.id), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: 'Accepted' %>
-              <%= f.submit 'Accept', class: 'btn btn-info btn-sm' %>
-            <% end %>
-          </td>
-          <td>
-            <%= form_for booking, url: reject_booking_path(booking.id), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: 'Rejected' %>
-              <%= f.submit 'Reject', class: 'btn btn-info btn-sm' %>
-            <% end %>
-          </td>
+  <div data-hide-show-div-target="current">
+    <div class="p-5 mx-auto" style="width: 90vw" >
+      <h1>My equipments for rent</h1>
+      <table class="table table-striped" id="booking-table">
+        <thead>
+          <tr>
+            <th scope="col">Equipment</th>
+            <th scope="col">Category</th>
+            <th scope="col">Made available on</th>
+            <th scope="col">Price/day</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @mylistings.each do |equipment| %>
+          <tr>
+            <td>
+              <%= cl_image_tag equipment.photo.key, height: 40, width: 40, crop: :fill, radius: 50 if equipment.photo.attached? %>
+              <%= equipment.name %>
+            </td>
+            <td>
+              <%=  image_tag(Category.find(equipment.category_id).image, style: "width: 30px;") %>
+              <%= Category.find(equipment.category_id).name %>
+            </td>
+            <td><%= equipment.created_at.strftime("%d %b %Y") %></td>
+            <td><%= equipment.price %> </td>
+            <td>
+                <%= link_to image_tag("edit.png", style: "width: 20px;"), edit_fitness_equipment_path(equipment.id), class: "actions-icon" %>
+                <%#= link_to image_tag("edit", height: 25, width: 25), edit_fitness_equipment_path(equipment.id), class: "actions-icon" %>
+                <%= link_to image_tag("delete.png", style: "width: 20px;"), fitness_equipment_path(equipment.id), class: "actions-icon", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+            </td>
         <% end %>
+        </tbody>
+      </table>
+
+      <div class="most-booked" style="margin-top:40px">
+        <h1>Top 3 Most booked</h1>
+          <% @top_booked.each_with_index do |equipment, index| %>
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= equipment.name %>
+                <% num_booked_class = "num-booked num-booked-#{index+1}" %>
+                <button class="<%= num_booked_class %>"> <%= equipment.booking_count %></button>
+              </li>
+            </ul>
+          <% end %>
+      </div>
+
+  </div>
 
 
+  </div>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div data-hide-show-div-target="previous" class="d-none">
+    <div class="p-5 mx-auto" style="width: 90vw" id="booking-table">
+    <h1>Booked Equipments by other users</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Equipment</th>
+          <th scope="col">Requested by</th>
+          <th scope="col">Date</th>
+          <th scope="col">Total</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @booked_equipments.each do |booking| %>
+          <% equipment = FitnessEquipment.find(booking.fitness_equipment_id) %>
+          <% user = User.find(booking.user_id) %>
+          <tr>
+            <td>
+              <%= cl_image_tag equipment.photo.key, height: 40, width: 40, crop: :fill, radius: 50 if equipment.photo.attached? %>
+              <%= equipment.name %>
+            </td>
+            <td><%= "#{user.first_name} #{user.last_name} " %></td>
+            <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
+            <td><%= booking.total %></td>
+            <td>
+              <% status_class = "status #{booking.status}" %>
+              <span class= "<%= status_class %>">
+                <%= booking.status %>
+              </span>
+            </td>
+
+            <td>
+            <% if booking.status == "Pending" %>
+                <div class="booking-options">
+
+                  <%= form_for booking, url: accept_booking_path(booking.id), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: 'Accepted' %>
+                    <%= f.submit 'Accept', class: 'options-accept' %>
+                  <% end %>
+                  <%= form_for booking, url: reject_booking_path(booking.id), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: 'Rejected' %>
+                    <%= f.submit 'Reject', class: 'options-reject' %>
+                  <% end %>
+                </div>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

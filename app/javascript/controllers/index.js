@@ -13,5 +13,8 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import HideShowDivController from "./hide_show_div_controller"
+application.register("hide-show-div", HideShowDivController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)

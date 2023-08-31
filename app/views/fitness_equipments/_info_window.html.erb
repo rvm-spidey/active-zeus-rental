@@ -1,4 +1,8 @@
 <%# <h2>= fitness_equipment.name</h2> %>
 
-<p><%= user.address %></p>
-<p><%= user.first_name %> <%= user.last_name %></p>
+<p>📍 <%=user.address %></p>
+<% count = FitnessEquipment.where(user_id: 1).count %>
+<p><%= user.first_name %> <%= user.last_name %> has
+  <strong> <%= link_to count, fitness_equipments_path(query: "#{user.first_name} #{user.last_name}" ) %></strong>
+  equipments
+</p>
