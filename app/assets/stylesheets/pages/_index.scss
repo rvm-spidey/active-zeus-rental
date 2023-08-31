@@ -1,136 +1,72 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.parent-container-index {
-  background-color: white;
-  overflow: hidden;
+.header-container {
+  padding: 25px;
+}
 
-  h1 {
-    padding-top: 65px;
-    font-weight: bold;
-    font-size: 50px;
-    color: white;
-    margin: auto 0;
+.card-body {
+
+  h4, p {
+    color: black;
   }
+
+  i {
+    color: purple;
+  }
+
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
-.header-container-index {
-  margin: 0 auto;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-// Categories filter
 
 .categories-container {
   margin-top: 30px;
   margin-bottom: 50px;
-}
 
-// cards styling
+  button {
+    color: white;
+    border-radius: 3px;
+    background-color: #F7C04A;
+    border: #F7C04A;
+    &:hover {
+      background-color: #A555EC;
+    }
+  }
+}
 
 .card {
-  min-height: 400px;
-  width: 280px;
-  margin: 0 auto;
-  box-shadow: 5px 5px 15px rgba(126, 125, 125, 0.589);
-  background-color: white;
-  border-radius: 17px;
-  text-align: center;
-  transition: 0.5s ease;
-  cursor: pointer;
-  margin-bottom: 42px;
-
-  &:hover {
-    transform: scale(1.08);
-    box-shadow: 5px 5px 15px rgba(104, 103, 103, 0.507);
-  }
+  margin-bottom: 50px;
+  box-shadow: 0 18px 58px rgba(136, 137, 137, 0.2);
 }
 
-.card-img {
-  margin-top: -5px;
-  margin-bottom: 10px;
+.card-img-top {
+  padding-bottom: 15px;
 }
 
-#card-button {
-  height: 30px;
-  width: 180px;
-  border-radius: .3rem;
-  background-color: rgb(8, 8, 8);
-  color: white;
-  margin: 15px auto;
-  padding-top: 2px;
+.card-body {
+ padding-top: 10px;
 
-  span {
-    margin-left: 1rem;
-    font-weight: bold;
-  }
-
-  &:hover,
-  &:active {
-    background-color: darken(rgba(247, 220, 20, 0.959), 2%);
-    color: rgb(8, 8, 8);
-  }
-
-  span {
-    margin-left: 1rem;
-    font-weight: bold;
-  }
+ h5 {
+  font-size: 23px;
+  padding-bottom: 5px;
+ }
 }
 
-.text-decoration-none {
-  color: white;
+.card-text {
+  padding-bottom: 4px;
+}
 
-  &:hover,
-  &:active {
-    background-color: darken(rgba(247, 220, 20, 0.959), 2%);
+.card-button {
+  margin-top: 4px;
+  margin-bottom: 8px;
+
+  .btn-warning {
     color: white;
-  }
-
-  span {
-    margin-left: 1rem;
-  }
-
-}
-
-.btn-outline-primary {
-  height: 100px;
-  width: 100px;
-  border-radius: 150px;
-  padding-top: 30px;
-  font-weight: bold;
-  // padding-right: -6px;
-  margin: auto 0;
-  background-color: darken(rgba(195, 27, 247, 0.959), 2%);
-  border: 3px solid darken(rgba(9, 9, 9, 0.959), 2%);
-  color: rgb(9, 9, 9);
-  font-size: 17px;
-
-  &:hover,
-  &:active {
-    background-color: darken(rgba(247, 220, 20, 0.959), 2%);
-    color: white;
-    border: 3px solid darken(rgba(247, 220, 20, 0.959), 2%);
-  }
-
-}
-
-.btn-primary {
-  height: 100px;
-  width: 100px;
-  border-radius: 150px;
-  padding-top: 30px;
-  font-weight: bold;
-  background-color: darken(rgba(247, 220, 20, 0.959), 2%);
-  border: 1px solid white;
-  color: white;
-  font-size: 17px;
-
-  &:hover,
-  &:active {
-    background-color: rgb(8, 8, 8);
-    color: white;
-    border: 3px solid rgb(8, 8, 8);
+    border-radius: 3px;
+    background-color: #F7C04A;
+    border: #F7C04A;
+    &:hover {
+      background-color: #A555EC;
+    }
   }
 }
