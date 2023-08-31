@@ -1,12 +1,23 @@
-<h1>Edit my listing:</h1>
-<hr>
-<br>
-<%= simple_form_for @equipment do |f| %>
-  <%= f.input :name %>
-  <%= f.input :category_id, collection: Category.all, label_method: :name, value_method: :id,label: "Category", include_blank: true %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :price, as: :numeric %>
-  <%= f.submit %>
-<% end %>
-<%= link_to "Cancel", admin_index_path %>
+<div class="p-5 mx-auto" style="width: 50vw; text-align: center" >
+  <h2>Edit given equipment</h2>
+</div>
+
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 50vh;">
+  <div class="bg-dark p-4 rounded" style="width: 50vw; height: 50vh;">
+    <%= simple_form_for @equipment do |f| %>
+
+      <%= f.input :name %>
+
+      <%= f.input :category_id, collection: Category.all, label_method: :name, value_method: :id,label: "Category", include_blank: true %>
+
+      <%= f.input :description %>
+
+      <%= f.input :photo, as: :file %>
+
+      <%= f.input :price, as: :numeric %>
+
+      <%= f.submit 'Confirm creation', style: 'width: 100%; background-color:#9eeff5'%>
+    <% end %>
+  </div>
+
+</div>
