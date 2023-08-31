@@ -1,7 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.parent-container {
+.parent-container-index {
   background-color: white;
   overflow: hidden;
 
@@ -14,15 +14,7 @@
   }
 }
 
-// previous header container and header format
-
-// .header-container {
-//   padding: 25px;
-// }
-
-// header container and header format
-
-.header-container {
+.header-container-index {
   margin: 0 auto;
   background-repeat: no-repeat;
   background-size: cover;
@@ -59,9 +51,6 @@
 .card-img {
   margin-top: -5px;
   margin-bottom: 10px;
-  // border-width: 2px;
-  // border-color: rgb(224, 219, 219);
-  // box-shadow: 5px 5px 15px rgba(211, 208, 208, 0.788);
 }
 
 #card-button {
@@ -111,7 +100,8 @@
   border-radius: 150px;
   padding-top: 30px;
   font-weight: bold;
-  padding-right: -6px;
+  // padding-right: -6px;
+  margin: auto 0;
   background-color: darken(rgba(195, 27, 247, 0.959), 2%);
   border: 3px solid darken(rgba(9, 9, 9, 0.959), 2%);
   color: rgb(9, 9, 9);
