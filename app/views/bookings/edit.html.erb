@@ -1,16 +1,20 @@
 
-<%= simple_form_for [@equipment, @booking],  data: { controller: 'flatpickr' } do |f| %>
+<div class="p-5 mx-auto" style="width: 50vw; text-align: center" >
+  <h2>Edit given equipment</h2>
+</div>
 
-  <%= f.association :fitness_equipment, as: :select %>
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 50vh;">
+  <div class="bg-dark p-4 rounded" style="width: 50vw; height: 50vh;">
 
-  <!--
-  <%= f.input :date_from, as: :date %>
-  <%= f.input :date_to, as: :date %>
-  -->
+  <%= simple_form_for [@equipment, @booking],  data: { controller: 'flatpickr' } do |f| %>
 
-  <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
-  <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
+    <%= f.association :fitness_equipment, as: :select %>
+
+    <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
+    <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
 
 
-  <%= f.submit class:"btn btn-flat" %>
-<% end %>
+    <%= f.submit 'Edit equipment', style: 'width: 100%; background-color:#9eeff5' %>
+  <% end %>
+
+</div>

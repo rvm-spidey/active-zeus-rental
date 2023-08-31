@@ -1,10 +1,8 @@
-<h1>test</h1>
-<div class="test">
-hello World
+<div class="p-5 mx-auto" style="width: 50vw; text-align: center" >
+  <h2>Add your equipment</h2>
 </div>
 
-<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 100vh;">
-
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 50vh;">
   <div class="bg-dark p-4 rounded" style="width: 50vw; height: 50vh;">
     <%= simple_form_for @equipment do |f| %>
 
@@ -18,7 +16,7 @@ hello World
 
       <%= f.input :price, as: :numeric %>
 
-      <%= f.submit 'Confirm creation', class: 'submit-form'%>
+      <%= f.submit 'Confirm creation', style: 'width: 100%; background-color:#9eeff5'%>
     <% end %>
   </div>
 
