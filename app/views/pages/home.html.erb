@@ -20,40 +20,45 @@
 
 <!--Icons -->
 
-<div class="banner-icons" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.2)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 200px; margin-top:150px ">
+<div class="banner-icons" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://static.vecteezy.com/system/resources/previews/009/971/516/original/purple-yellow-gradient-background-abstract-texture-illustration-free-vector.jpg); height: 200px; margin-top:50px ">
 <div class="icons">
 <ul class="list-inline">
   <li class="list-inline-item">
     <div class="step-header">
       <h2>Free cancellation</h2>
     </div>
-    <img class="img_size" src="/assets/paper.png" width="70px">
+    <%=  image_tag("paper.png", style: "width: 70px;") %>
+    <%# <img class="img_size" src="/assets/paper.png" width="70px"> %>
 
   </li>
   <li class="list-inline-item">
     <div class="step-header">
       <h2>Low rate</h2>
     </div>
-    <img class="img_size" src="/assets/rate.png" width="70px">
+    <%=  image_tag("rate.png", style: "width: 70px;") %>
+    <%# <img class="img_size" src="/assets/rate.png" width="70px"> %>
     <%#= image_tag("rate.png"), class="img_size"  %>
   </li>
   <li class="list-inline-item">
     <div class="step-header">
       <h2>Easy booking</h2>
     </div>
-    <img class="img_size" src="/assets/installment.png" width="70px">
+    <%=  image_tag("installment.png", style: "width: 70px;") %>
+    <%# <img class="img_size" src="/assets/installment.png" width="70px"> %>
   </li>
   <li class="list-inline-item">
     <div class="step-header">
       <h2>Secure payment</h2>
     </div>
-    <img class="img_size" src="/assets/operation.png" width="70px">
+    <%=  image_tag("operation.png", style: "width: 70px;") %>
+    <%# <img class="img_size" src="/assets/operation.png" width="70px"> %>
   </li>
   <li class="list-inline-item">
     <div class="step-header">
       <h2>No credit card fees</h2>
     </div>
-    <img class="img_size" src="/assets/credit-card.png" width="70px">
+    <%=  image_tag("credit-card.png", style: "width: 70px;") %>
+    <%# <img class="img_size" src="/assets/credit-card.png" width="70px"> %>
   </li>
 </ul>
 </div>
@@ -159,7 +164,13 @@
         <div class="card-body-fitness">
           <h2 class="card-title"><%= equipment.name    %></h2>
           <p class="card-text"><%= equipment.booking_count %> equipment(s) booked </p>
-          <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-primary"%>
+          <% if user_signed_in? %>
+            <% if equipment.user_id = current_user.id %>
+                <h3>Your equipment</h3>
+             <% end %>
+            <% else %>
+              <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-primary"%>
+          <% end %>
         </div>
       </div>
     </div>
@@ -193,8 +204,9 @@
 
 
   <!--Browse equip button -->
-  <div class="text-center equip-btn">
-    <%= link_to "Browse our equipments", fitness_equipments_path,class:"btn btn-warning btn-lg"%>
+
+  <div class="d-grid gap-2 col-6 mx-auto m-5">
+    <%= link_to "Discover our equipments", fitness_equipments_path,class:"btn btn-warning btn-lg"%>
   </div>
 
   <%# <!-- HTML !-->

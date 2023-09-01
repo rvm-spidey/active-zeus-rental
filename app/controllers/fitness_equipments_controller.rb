@@ -8,12 +8,25 @@ class FitnessEquipmentsController < ApplicationController
     @category_selected = 0
     if params[:category].present?
       @category_selected = params[:category].to_i
-      @equipments = FitnessEquipment.where(category_id: @category_selected).where.not(user_id: current_user.id)
+      if user_signed_in?
+        @equipments = FitnessEquipment.where(category_id: @category_selected).where.not(user_id: current_user.id)
+      else
+        @equipments = FitnessEquipment.where(category_id: @category_selected)
+      end
     elsif params[:query].present?
-      @equipments = FitnessEquipment.search_by_title_and_description(params[:query]).where.not(user_id: current_user.id)
+      if user_signed_in?
+        @equipments = FitnessEquipment.search_by_title_and_description(params[:query]).where.not(user_id: current_user.id)
+      else
+        @equipments = FitnessEquipment.search_by_title_and_description(params[:query])
+      end
     else
       #else display all
-      @equipments = FitnessEquipment.all
+      # @equipments = FitnessEquipment.all
+      if user_signed_in?
+        @equipments = FitnessEquipment.where.not(user_id: current_user.id)
+      else
+        @equipments = FitnessEquipment.all
+      end
     end
   end
 

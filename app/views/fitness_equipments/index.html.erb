@@ -1,8 +1,8 @@
 <div class="parent-container-index">
   <div class="header-container-index"
   style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),
-  url(https://media.istockphoto.com/id/1225398804/photo/sports-color-background.jpg?s=612x612&w=0&k=20&c=MQEmfl5AAomX81uhq_RrQoE0AspaHTtHQ6c430JcgLo=);
-  height: 190px; width: 100vw; object-fit: cover; object-position: 0 100%;">
+  url(https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80);
+  height: 200px; width: 100vw;object-fit: cover;">
     <h1 class="text-center">
       All equipments
     </h1>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class="col-sm-3 mb-5">
+  <div class="col-sm-5 mb-5">
     <%= form_with url: fitness_equipments_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -42,7 +42,7 @@
 
   <div class="container">
     <!-- Row Start -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin:70px">
       <div class="no-equipment-found">
         <% if @equipments.count.zero? %>
           <h1>No equipment found :(</h1>
