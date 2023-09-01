@@ -17,3 +17,13 @@
 
 @import "flatpickr/dist/flatpickr.css";
 @import "flatpickr/dist/themes/confetti";
+
+
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  margin-top: auto;
+}
