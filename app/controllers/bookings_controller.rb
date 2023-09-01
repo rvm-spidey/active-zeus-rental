@@ -18,18 +18,21 @@ class BookingsController < ApplicationController
     days_diff = (@booking.date_to - @booking.date_from).to_i
     @booking.total = days_diff * @fitness_equipment.price
 
-    # @booking_exists = Booking.where(fitness_equipment_id:@fitness_equipment.id).count
-    # puts "@bbooking_exists #{@booking_exists}"
+    @booking_exists = Booking.where(fitness_equipment_id:@fitness_equipment.id).where('date_from >= ? AND date_to<= ?',@booking.date_from, @booking.date_to).count
+
+    if @booking.save
+      redirect_to bookings_path
+    end
 
     # if @booking_exists > 0
     #   @booking.errors.add(:base, "There is already a booking for this date range")
     #   render :new, status: :unprocessable_entity
-    if @booking.save
-      redirect_to bookings_path
-    else
-      @booking = Booking.new
-      render :new, status: :unprocessable_entity
-    end
+    # elsif @booking.save
+    #   redirect_to bookings_path
+    # else
+    #   @booking = Booking.new
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def destroy
