@@ -45,11 +45,13 @@
  }
 
  .benefits-title h2 {
+  text-align: center;
   font-size:50px;
   margin-bottom: 35px;
 }
 
 .top-picks-title h2 {
+  text-align: center;
   font-size: 50px;
   padding-left:30px;
   margin-bottom: 35px;
@@ -76,9 +78,9 @@
 
 
 .equip-btn {
+  margin-top: 100px;
   margin-bottom: 75px;
   border-radius: 3px;
-
 }
 
 .btn-dark {
@@ -112,6 +114,10 @@
   }
 }
 
+.container-home {
+  // margin: 0 auto;
+}
+
 #search-container {
   background-color: rgb(250, 248, 248);
   margin-top: -50px;
@@ -121,4 +127,31 @@
   padding-bottom: 30px;
   padding-top: 30px;
   box-shadow: 0 18px 58px rgba(39, 78, 94, 0.2);
+}
+
+
+.card-home {
+  min-height: 350px;
+  width: 350px;
+  margin: 0 auto;
+  box-shadow: 5px 5px 15px rgba(126, 125, 125, 0.589);
+  background-color: white;
+  border-radius: 17px;
+  text-align: center;
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin-bottom: 42px;
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 5px 5px 15px rgba(104, 103, 103, 0.507);
+  }
+}
+
+.wavy-styling {
+  width: 100px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fef2e8;
+  text-decoration: underline wavy  #f9dabf;
+  text-underline-offset: 0.5em;
+  text-align: center;
 }
