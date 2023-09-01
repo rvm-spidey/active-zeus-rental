@@ -12,7 +12,7 @@ class FitnessEquipmentsController < ApplicationController
     elsif params[:query].present?
       @equipments = FitnessEquipment.search_by_title_and_description(params[:query]).where.not(user_id: current_user.id)
     else
-      @equipments = FitnessEquipment.all.where.not(user_id: current_user.id)
+      @equipments = FitnessEquipment.all
     end
   end
 
