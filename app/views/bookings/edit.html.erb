@@ -1,11 +1,11 @@
 
 <div class="p-5 mx-auto" style="width: 50vw; text-align: center" >
-  <h2>Edit given equipment</h2>
+  <h2>Edit booking</h2>
 </div>
 
-<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 50vh;">
-  <div class="bg-dark p-4 rounded" style="width: 50vw; height: 50vh;">
 
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 40%;">
+  <div class="bg-dark p-4 rounded" style="width: 50vw; height: 40%;">
   <%= simple_form_for [@equipment, @booking],  data: { controller: 'flatpickr' } do |f| %>
 
     <%= f.association :fitness_equipment, as: :select %>
@@ -16,5 +16,5 @@
 
     <%= f.submit 'Edit equipment', style: 'width: 100%; background-color:#9eeff5' %>
   <% end %>
-
+  </div>
 </div>
