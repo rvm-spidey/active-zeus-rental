@@ -4,12 +4,43 @@
       <%= image_tag("zeus.png") %>
       Active Zeus Rental
     <% end %>
+    <style>
+      .material-symbols-outlined {
+          font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
 
+          margin-left: -40px;
+          background-color: #f4f4f401;
+          border: 0px solid rgba(53, 53, 53, 0.636);
+          color: rgba(53, 53, 53, 0.636);
+      }
 
+      .form-control {
+        height: 35px;
+        width: 500px;
+        border-radius: 50px;
+      }
+    </style>
+
+    <% if action_name == "home" %>
+      <div class="form col-m-12">
+        <%= form_with url: fitness_equipments_path, method: :get, class:"d-flex" do %>
+          <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Search...."
+              %>
+              <%= submit_tag "Search" , name: "", class: "material-symbols-outlined" %>
+            <%# <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+          <% end %>
+      </div>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
