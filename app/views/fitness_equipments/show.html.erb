@@ -1,3 +1,71 @@
+<h1><strong>Fitness equipment detail</strong></h1>
+<div class="container container-show py 3" >
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <%= cl_image_tag @equipment.photo.key, height: 400, width: 365, crop: :fill if @equipment.photo.attached? %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5>Book</h5>
+            <div data-controller="flatpickr" >
+            <p data-flatpickr-target="price" class="d-none"><%= @equipment.price %></p>
+              <%= simple_form_for [@equipment, @booking] do |f| %>
+                <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate", action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today } } %>
+                <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" , action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today+1 } } %>
+
+                <%= f.submit class:"btn btn-flat" %>
+
+              <% end %>
+            <button class="btn btn-outline-success d-none" id="totalButton" data-flatpickr-target="total">
+              Days will be replaced once you select a valid date
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div >
+          <%# <div data-controller="flatpickr" > %>
+            <h5><%= @equipment.name %></h5>
+            <br>
+            <p>Description <%= @equipment.description %></p>
+            <p>Price <%= @equipment.price %></p>
+            <p>Category Id <%= @equipment.category_id %></p>
+            <p>Category Name  <%= @category.name %></p>
+            <p>Owner Id <%= @equipment.user_id %></p>
+            <p>Owner Name <%= @owner.first_name %></p>
+            <p>Owner Name <%= @owner.latitude %></p>
+            <p>Owner Name <%= @owner.longitude %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <div style="width: 100%; height: 400px;"
+            data-controller="map"
+            data-map-markers-value="<%= @marker.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
 <div data-controller="flatpickr" >
   <p>Name: <%= @equipment.name %></p>
   <p>Description <%= @equipment.description %></p>
@@ -39,3 +107,6 @@
   data-controller="map"
   data-map-markers-value="<%= @marker.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+
+-->
