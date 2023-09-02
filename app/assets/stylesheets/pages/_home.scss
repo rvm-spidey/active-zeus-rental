@@ -15,7 +15,7 @@
 .list-inline {
   text-align: center;
   align-items: center;
-  margin: 40px;
+  margin: 5px;
 
 }
 
@@ -141,6 +141,16 @@
     }
   }
 }
+
+.btn-warning {
+  color: white;
+    border-radius: 3px;
+    background-color: #F7C04A;
+    border: #F7C04A;
+    &:hover {
+      background-color: #A555EC;
+    }
+  }
 
 .container-home {
   // margin: 0 auto;
