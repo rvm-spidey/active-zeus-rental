@@ -4,9 +4,12 @@
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Roboto', sans-serif;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color:rgba(117, 117, 120, 0.752);
+  font-size: 15px;
+  color: white;
 }
 
 .marker {
