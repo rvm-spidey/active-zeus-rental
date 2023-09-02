@@ -1,7 +1,7 @@
 <%# <h2>= fitness_equipment.name</h2> %>
 
 <p>📍 <%=user.address %></p>
-<% count = FitnessEquipment.where(user_id: current_user.id).count %>
+<% count = FitnessEquipment.where(user_id: @equipment.user_id).count %>
 <p><%= user.first_name %> <%= user.last_name %> has
   <strong> <%= link_to count, fitness_equipments_path(query: "#{user.first_name} #{user.last_name}" ) %></strong>
   equipments
