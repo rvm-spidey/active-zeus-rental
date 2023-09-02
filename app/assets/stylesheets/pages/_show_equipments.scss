@@ -1,6 +1,10 @@
 .container-show {
   background-color:white;
 }
+
+.show-title {
+  font-weight: 500;
+}
 h1 {
   display: flex;
   justify-content: center;
@@ -15,13 +19,46 @@ h1 {
     background-color: #fff;
     background-clip: border-box;
     // border: 1px solid rgba(0,0,0,.125);
-    // border:none;
+    border:none;
     border-radius: 0.25rem;
     padding:10px;
+    margin-left: 30px;
 }
 div {
   display:block;
 }
 * {
   box-sizing: border-box;
+}
+
+.first-row {
+  margin-top: 30px;
+}
+
+.second-row {
+  margin-top: 10px;
+}
+
+.bkng-count {
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.img-card-body {
+  border-radius: 0;
+}
+
+.container-show button {
+  margin-bottom:10px;
+}
+
+#totalButton {
+  background-color: white;
+  color:rgb(151, 78, 195);
+  border:solid 2px;
+  font-weight:400;
+}
+
+.product-details span {
+  font-weight: 600;
 }

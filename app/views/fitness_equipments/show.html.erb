@@ -1,17 +1,17 @@
 <h1><strong>Fitness equipment detail</strong></h1>
-<div class="container container-show py 3" >
-  <div class="row">
+<div class="container overflow-hidden container-show py 3">
+  <div class="row first-row">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
-          <%= cl_image_tag @equipment.photo.key, height: 400, width: 365, crop: :fill if @equipment.photo.attached? %>
+        <div class="card-body img-card-body">
+          <%= cl_image_tag @equipment.photo.key, height: 400, width: 500, crop: :fill if @equipment.photo.attached? %>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <h5>Book</h5>
+          <h3 class="show-title">Book now</h3>
             <div data-controller="flatpickr" >
             <p data-flatpickr-target="price" class="d-none"><%= @equipment.price %></p>
               <%= simple_form_for [@equipment, @booking] do |f| %>
@@ -22,34 +22,38 @@
                 <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate", action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today } } %>
                 <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" , action: "change->flatpickr#calculate", alt_input: "true", date_format: "Y-m-d", min_date: Date.today+1 } } %>
 
-                <%= f.submit class:"btn btn-flat" %>
+                <div class="bkng-count">
+                  <button class="btn btn-outline-success d-none" id="totalButton" data-flatpickr-target="total">
+                    Days will be replaced once you select a valid date
+                  </button>
+                </div>
+                <%= f.submit class:"btn btn-dark booking-btn" %>
 
               <% end %>
-            <button class="btn btn-outline-success d-none" id="totalButton" data-flatpickr-target="total">
-              Days will be replaced once you select a valid date
-            </button>
+
           </div>
 
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
+
+  <div class="row second-row">
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <div >
+          <div class="product-details">
           <%# <div data-controller="flatpickr" > %>
-            <h5><%= @equipment.name %></h5>
+            <h3 class="show-title"><%= @equipment.name %></h3>
             <br>
-            <p>Description <%= @equipment.description %></p>
-            <p>Price <%= @equipment.price %></p>
-            <p>Category Id <%= @equipment.category_id %></p>
-            <p>Category Name  <%= @category.name %></p>
-            <p>Owner Id <%= @equipment.user_id %></p>
-            <p>Owner Name <%= @owner.first_name %></p>
-            <p>Owner Name <%= @owner.latitude %></p>
-            <p>Owner Name <%= @owner.longitude %></p>
+            <p><span>Description:</span> <%= @equipment.description %></p>
+            <p><span>Price:</span> Rs  <%= @equipment.price %></p>
+            <!--<p><span>Category Id <%= @equipment.category_id %></p>-->
+            <p><span>Category Name:</span>  <%= @category.name %></p>
+            <!--<p>Owner Id <%= @equipment.user_id %></p>-->
+            <p><span>Owner Name:</span> <%= @owner.first_name %></p>
+            <!--<p>Owner Name <%= @owner.latitude %></p>
+            <p>Owner Name <%= @owner.longitude %></p> -->
           </div>
         </div>
       </div>
@@ -57,7 +61,7 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          <div style="width: 100%; height: 400px;"
+          <div style="width: 100%; height: 350px;"
             data-controller="map"
             data-map-markers-value="<%= @marker.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
