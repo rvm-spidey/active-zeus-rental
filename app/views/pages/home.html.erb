@@ -134,7 +134,7 @@
           <%= cl_image_tag equipment.photo.key, height: 180, width: 180, crop: :fit if equipment.photo.attached? %>
         </div>
         <div class="card-body-fitness">
-          <h2 class="card-title"><%= equipment.name    %></h2>
+          <h3 class="card-title"><%= equipment.name    %></h3>
           <p class="card-text"><%= equipment.booking_count %> equipment(s) booked </p>
           <% if user_signed_in? %>
             <% if equipment.user_id == current_user.id %>
