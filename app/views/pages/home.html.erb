@@ -140,10 +140,10 @@
             <% if equipment.user_id == current_user.id %>
                 <h4>Your listed equipments</h4>
             <% else %>
-               <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-primary"%>
+               <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-warning"%>
              <% end %>
             <% else %>
-              <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-primary"%>
+              <%= link_to "Have a look at this equipment", fitness_equipments_path(query: equipment.name),class:"btn btn-warning"%>
           <% end %>
         </div>
       </div>
